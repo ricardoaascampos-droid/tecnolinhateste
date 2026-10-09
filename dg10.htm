@@ -1,0 +1,64 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<script language="JavaScript">
+<!--
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+// -->
+</script>
+</head>
+
+<body onload="FP_preloadImgs(/*url*/'images/buttonE3.jpg', /*url*/'images/buttonE4.jpg', /*url*/'images/button38.jpg', /*url*/'images/button43.jpg')">
+
+<p><a href="la1.htm">
+<img border="0" id="img1" src="images/buttonE2.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE3.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE2.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE4.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE3.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Voltar"></a></p>
+<p align="center">
+<img border="0" id="img13" src="images/button44.jpg" height="60" width="300" alt="DG 10" onmouseover="FP_swapImg(1,0,/*id*/'img13',/*url*/'images/button38.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img13',/*url*/'images/button44.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img13',/*url*/'images/button43.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img13',/*url*/'images/button38.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="DG 10"></p>
+<p align="center">&nbsp;</p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<span style="font-size: 24.0pt; line-height: 107%; color: red">Falha de 
+retificador – principais causas e problemas</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="left">
+<span style="font-size: 14.0pt; line-height: 107%">1º passo – verificar nível do 
+banho</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="left">
+<span style="font-size: 14.0pt; line-height: 107%">2º passo – verificar se a 
+bomba está desobstruída</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:92.15pt;text-indent:-63.8pt" align="left">
+<span style="font-size: 14.0pt; line-height: 107%">3º passo – verificar contatos 
+do cilindro, sendo que alguns utilizam peças e podem as mesmas estar a provocar 
+isolamento ( caso os passos anteriores falhem e estiver um cilindro dentro da 
+maquina é importante secar bem o cilindro antes de o retirar para verificar este 
+passo, normalmente este erro dá ainda com o banho em cima sem lançar acido para 
+o cilindro o que estando ainda envolvido com o desengordurante não existe o 
+perigo de oxidar).</span></p>
+<p align="center">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master LA1 - Kaspar Walter Line</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	/* Botão Voltar */
+	.navigation-area {
+		text-align: left;
+		margin-bottom: 25px;
+	}
+	
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #ffffff;
+		color: #475569;
+		text-decoration: none;
+		border-radius: 6px;
+		font-weight: 600;
+		font-size: 10pt;
+		border: 1px solid #e2e8f0;
+		transition: all 0.15s ease;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	}
+	.btn-voltar:hover {
+		background-color: #edf2f7;
+		color: #0f172a;
+	}
+
+	/* Grelha de Cartões */
+	.button-grid {
+		display: inline-block;
+		width: 100%;
+		max-width: 640px;
+		margin: 0 auto;
+	}
+
+	.grid-row {
+		margin-bottom: 16px;
+		clear: both;
+		display: flex;
+		gap: 16px;
+		justify-content: center;
+	}
+
+	/* Botão Base com Degradê Suave Fluído */
+	.btn-maquina {
+		display: block;
+		width: 300px;
+		height: 75px;
+		text-decoration: none;
+		border-radius: 8px;
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(to right, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+		border: 1px solid #cbd5e1;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+		transition: all 0.25s ease;
+		box-sizing: border-box;
+	}
+
+	/* Configuração das Imagens PNG à direita */
+	.bg-img {
+		position: absolute;
+		top: 5px; 
+		right: 10px; 
+		width: 50%;
+		height: calc(100% - 10px);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right center;
+		transition: transform 0.25s ease;
+		z-index: 1;
+	}
+
+	/* Película de Integração Suave */
+	.overlay {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: linear-gradient(to right, rgba(255,255,255,0.8) 35%, rgba(255,255,255,0) 100%);
+		z-index: 2;
+		transition: all 0.2s ease;
+	}
+
+	/* Texto Técnico à esquerda */
+	.text-label {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 20px;
+		color: #1e293b;
+		font-size: 11.5pt;
+		font-weight: 700;
+		letter-spacing: 0.2px;
+		box-sizing: border-box;
+	}
+
+	/* Botão de Largura Total (Estilo Master e Q-Trac) */
+	.btn-fullwidth {
+		width: 616px;
+		height: 60px;
+	}
+	.btn-fullwidth .text-label {
+		justify-content: center;
+		padding-left: 0;
+		font-size: 13pt;
+		text-transform: uppercase;
+	}
+	.btn-fullwidth .bg-img { width: 30%; }
+
+	/* Degradê do Master PC (Azul Corporativo) */
+	.btn-master-style {
+		background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+		border: 2px solid #2563eb;
+	}
+	.btn-master-style .text-label { color: #1e3a8a; }
+	.btn-master-style .overlay {
+		background: linear-gradient(to right, rgba(239,246,255,0.8) 45%, rgba(239,246,255,0) 100%);
+	}
+
+	/* Degradê do Q-Trac (Verde Técnico de Qualidade/Medição) */
+	.btn-qtrac-style {
+		background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #dcfce7 100%);
+		border: 2px solid #16a34a;
+	}
+	.btn-qtrac-style .text-label { color: #14532d; }
+	.btn-qtrac-style .overlay {
+		background: linear-gradient(to right, rgba(240,253,244,0.8) 45%, rgba(240,253,244,0) 100%);
+	}
+
+	/* Efeitos Hover Gerais */
+	.btn-maquina:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 18px -3px rgba(37, 99, 235, 0.12);
+		border-color: #2563eb;
+		background: linear-gradient(to right, #ffffff 0%, #eff6ff 65%, #dbeafe 100%);
+	}
+	.btn-maquina:hover .bg-img { transform: scale(1.05); }
+	.btn-maquina:hover .text-label { color: #2563eb; }
+	.btn-maquina:hover .overlay {
+		background: linear-gradient(to right, rgba(248,250,252,1) 45%, rgba(248,250,252,0.1) 100%);
+	}
+
+	/* Hover específico do Q-Trac */
+	.btn-qtrac-style:hover {
+		border-color: #16a34a;
+		background: linear-gradient(to right, #ffffff 0%, #f0fdf4 65%, #bbf7d0 100%);
+	}
+	.btn-qtrac-style:hover .text-label { color: #16a34a; }
+	.btn-qtrac-style:hover .overlay {
+		background: linear-gradient(to right, rgba(240,253,244,1) 45%, rgba(240,253,244,0.1) 100%);
+	}
+
+	/* Destaque das Cubas de Cobre CuMax */
+	.btn-cumax {
+		border-left: 4px solid #ea580c;
+		background: linear-gradient(to right, #ffffff 0%, #fff7ed 60%, #ffedd5 100%);
+	}
+	.btn-cumax .text-label { color: #c2410c; }
+	.btn-cumax .overlay {
+		background: linear-gradient(to right, rgba(255,247,237,0.8) 35%, rgba(255,247,237,0) 100%);
+	}
+	.btn-cumax:hover {
+		border-color: #ea580c;
+		background: linear-gradient(to right, #ffffff 0%, #ffedd5 50%, #fed7aa 100%);
+	}
+	.btn-cumax:hover .text-label { color: #ea580c; }
+
+	.btn-maquina:active { transform: translateY(0); }
+
+	/* MAPEAMENTO DOS SEUS ARQUIVOS .PNG ATUAIS */
+	.img-master { background-image: url('images/maquina_master.jpg'); }
+	.img-grua   { background-image: url('images/maquina_po20.png'); }
+	.img-pl11   { background-image: url('images/maquina_pl11.png'); }
+	.img-dg10   { background-image: url('images/maquina_dg10.png'); }
+	.img-cr11   { background-image: url('images/maquina_cr11.png'); }
+	.img-co12   { background-image: url('images/maquina_co12.png'); }
+	.img-co16   { background-image: url('images/maquina_co16.png'); }
+	.img-k501   { background-image: url('images/maquina_ge04.png'); }
+	.img-k502   { background-image: url('images/maquina_ge05.png'); }
+	.img-qtrac  { background-image: url('images/maquina_qtrac.png'); }
+</style>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+	<!-- Botão Voltar Superior -->
+	<div class="navigation-area">
+		<a href="if1.htm" class="btn-voltar">&larr; Voltar</a>
+	</div>
+
+	<div class="button-grid">
+		
+		<!-- Botão Master (Topo de Largura Total) -->
+		<div class="grid-row">
+			<a href="masterLA1.htm" class="btn-maquina btn-fullwidth btn-master-style" title="Master LA1">
+				<div class="bg-img img-master"></div>
+				<div class="overlay"></div>
+				<div class="text-label">Master LA1</div>
+			</a>
+		</div>
+
+		<!-- Linha 1: Grua LA1 e PL 11 -->
+		<div class="grid-row">
+			<a href="po20.htm" class="btn-maquina" title="Grua LA1">
+				<div class="bg-img img-grua"></div>
+				<div class="overlay"></div>
+				<div class="text-label">Grua LA1</div>
+			</a>
+			<a href="pl11.htm" class="btn-maquina" title="PL 11">
+				<div class="bg-img img-pl11"></div>
+				<div class="overlay"></div>
+				<div class="text-label">PL 11</div>
+			</a>
+		</div>
+
+		<!-- Linha 2: DG 10 e CR 11 -->
+		<div class="grid-row">
+			<a href="dg10.htm" class="btn-maquina" title="DG 10">
+				<div class="bg-img img-dg10"></div>
+				<div class="overlay"></div>
+				<div class="text-label">DG 10</div>
+			</a>
+			<a href="cr11.htm" class="btn-maquina" title="CR 11">
+				<div class="bg-img img-cr11"></div>
+				<div class="overlay"></div>
+				<div class="text-label">CR 11</div>
+			</a>
+		</div>
+
+		<!-- Linha 3: Cobreamento CuMax -->
+		<div class="grid-row">
+			<a href="co12.htm" class="btn-maquina btn-cumax" title="CO12 - CuMax">
+				<div class="bg-img img-co12"></div>
+				<div class="overlay"></div>
+				<div class="text-label">CO12 - CuMax</div>
+			</a>
+			<a href="co16.htm" class="btn-maquina btn-cumax" title="CO16 - CuMax">
+				<div class="bg-img img-co16"></div>
+				<div class="overlay"></div>
+				<div class="text-label">CO16 - CuMax</div>
+			</a>
+		</div>
+
+		<!-- Linha 4: Hardware Estações -->
+		<div class="grid-row">
+			<a href="la1_k501.htm" class="btn-maquina" title="GE04 - K501">
+				<div class="bg-img img-k501"></div>
+				<div class="overlay"></div>
+				<div class="text-label">GE04 - K501</div>
+			</a>
+			<a href="la1_k502.htm" class="btn-maquina" title="GE05 - K502">
+				<div class="bg-img img-k502"></div>
+				<div class="overlay"></div>
+				<div class="text-label">GE05 - K502</div>
+			</a>
+		</div>
+
+		<!-- INOVAÇÃO FINAL: Novo Botão Q-Trac de Largura Total no Fundo -->
+		<div class="grid-row">
+			<a href="qtrac.htm" class="btn-maquina btn-fullwidth btn-qtrac-style" title="Q-Trac Quality Control">
+				<div class="bg-img img-qtrac"></div>
+				<div class="overlay"></div>
+				<div class="text-label">Q-Trac</div>
+			</a>
+		</div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

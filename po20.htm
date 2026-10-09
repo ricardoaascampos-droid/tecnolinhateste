@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<script language="JavaScript">
+<!--
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+// -->
+</script>
+</head>
+
+<body onload="FP_preloadImgs(/*url*/'images/buttonE0.jpg', /*url*/'images/buttonE1.jpg', /*url*/'images/button2C.jpg', /*url*/'images/button2D.jpg')">
+
+<p align="left"><a href="la1.htm">
+<img border="0" id="img1" src="images/buttonDF.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE0.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonDF.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE1.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE0.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Voltar"></a></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<img border="0" id="img11" src="images/button2B2.jpg" height="60" width="300" alt="Grua LA1" onmouseover="FP_swapImg(1,0,/*id*/'img11',/*url*/'images/button2C.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img11',/*url*/'images/button2B2.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img11',/*url*/'images/button2D.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img11',/*url*/'images/button2C.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Grua LA1"></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+&nbsp;</p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<span style="line-height: 107%; color: red"><font size="7">Erro do bus 
+codificador elevador: </font></span></p>
+<p align="center">
+<img border="0" src="images/2016-04-13%2008.21.17.jpg" width="496" height="279"></p>
+<p align="center">
+<img border="0" src="images/2016-04-13%2008.24.10.jpg" width="404" height="718"><img border="0" src="images/2016-04-13%2008.24.05.jpg" width="404" height="718"></p>
+<p align="center">&nbsp;</p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<span style="font-size: 16pt; line-height: 107%">1º passo - Verificar e 
+posicionar todos os valores padrão da grua</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<span style="font-size: 16pt; line-height: 107%">largura : 1500&nbsp;&nbsp;&nbsp;&nbsp; altura: 
+1000&nbsp;&nbsp;&nbsp;&nbsp; estacionamento: carro 6</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:3.0cm;text-indent:-2.0cm" align="center">
+<span style="font-size: 16pt; line-height: 107%">2º passo - se algum destes 
+parametros falhar (não for possivel colocar nos valores padrão), desligar por 2 
+min +/- a grua.</span></p>
+<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
+8.0pt;margin-left:1.0cm" align="center">
+<span style="font-size: 16pt; line-height: 107%">3º&nbsp; passo - após reinicio 
+verificar se podem colocar nos valores padrões e colocar.</span></p>
+
+</body>
+
+</html>

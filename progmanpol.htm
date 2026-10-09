@@ -1,0 +1,362 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Informativo - Lixa</title>
+<style>
+	/* Base de Design Limpa e Compatível com FrontPage */
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f4f6f9;
+		margin: 0;
+		padding: 20px;
+		color: #333333;
+		text-align: center;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	/* Banner Informativo Superior */
+	.alert-banner {
+		background-color: #fff9db;
+		border-left: 6px solid #fab005;
+		color: #e67e22;
+		padding: 15px;
+		margin-bottom: 20px;
+		font-weight: bold;
+		font-size: 13pt;
+		border-radius: 6px;
+	}
+
+	/* Estrutura do Painel */
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 20px;
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	/* Botão Voltar Estável */
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+
+	/* Inovação: Estilo da Barra de Pesquisa */
+	.search-box-container {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.search-input {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 12px 15px;
+		font-size: 11pt;
+		border: 2px solid #cbd5e1;
+		border-radius: 6px;
+		background-color: #ffffff;
+		color: #334155;
+	}
+	
+	.search-input:focus {
+		border-color: #3b82f6;
+		outline: none;
+	}
+
+	/* Estrutura da Tabela */
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 9pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: center;
+	}
+
+	td {
+		padding: 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		text-align: center;
+	}
+
+	/* Estilização das Linhas Alternadas e Destaques */
+	.linha-par {
+		background-color: #f8fafc;
+	}
+
+	.pille-prog {
+		background-color: #eff6ff;
+		color: #2563eb;
+		font-weight: bold;
+		padding: 3px 8px;
+		border-radius: 4px;
+	}
+
+	.alerta-critico {
+		background-color: #fef2f2;
+		color: #dc2626;
+		font-weight: bold;
+		padding: 3px 8px;
+		border-radius: 4px;
+	}
+	
+	.vazio-cell {
+		color: #94a3b8;
+		font-style: italic;
+	}
+</style>
+
+<!-- Script de Filtragem em Tempo Real Ultraleve e Anti-Crash -->
+<script language="JavaScript">
+<!--
+function filtrarTabela() {
+	var input = document.getElementById("txtPesquisa");
+	var filter = input.value.toLowerCase();
+	var table = document.getElementById("tabelaMedidas");
+	var tr = table.getElementsByTagName("tr");
+
+	// Percorre todas as linhas da tabela (ignora o cabeçalho index 0)
+	for (var i = 1; i < tr.length; i++) {
+		var exibir = false;
+		var td = tr[i].getElementsByTagName("td");
+		
+		// Pesquisa em todas as colunas da linha
+		for (var j = 0; j < td.length; j++) {
+			if (td[j]) {
+				var txtValue = td[j].textContent || td[j].innerText;
+				if (txtValue.toLowerCase().indexOf(filter) > -1) {
+					exibir = true;
+					break;
+				}
+			}
+		}
+		
+		// Aplica a visibilidade sem quebrar o layout
+		if (exibir) {
+			tr[i].style.display = "";
+		} else {
+			tr[i].style.display = "none";
+		}
+	}
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+	<!-- Banner Informativo -->
+	<div class="alert-banner">
+		&#9888; ATENÇÃO: ESPIGA GRANDE SEMPRE PARA O LADO DA PEDRA
+	</div>
+
+	<!-- Cartão do Painel Principal -->
+	<div class="dashboard-card">
+		
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Programação Manual da Lixa</h1></td>
+				<td align="right"><a href="if1.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<!-- Campo de Pesquisa Interativo -->
+		<div class="search-box-container">
+			<input type="text" id="txtPesquisa" class="search-input" onkeyup="filtrarTabela()" placeholder="Digite para filtrar por Prog, Comprimento ou Cliente...">
+		</div>
+
+		<!-- Listagem de Medidas -->
+		<div class="table-container">
+			<table id="tabelaMedidas">
+				<thead>
+					<tr>
+						<th style="width: 10%;">Prog</th>
+						<th style="width: 45%;">Comprimento</th>
+						<th style="width: 25%;">Cliente</th>
+						<th style="width: 10%;">LI</th>
+						<th style="width: 10%;">LC</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td><span class="pille-prog">47</span></td><td>420 (Per. 360 &gt; com cones Bicudos)</td><td><b>HG Vintacap</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">48</span></td><td>450</td><td class="vazio-cell">—</td><td>30/32/34</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">49</span></td><td>530</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">50</span></td><td>600 a 650</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">69</span></td><td>650</td><td><b>Breger</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">70</span></td><td>680</td><td><b>Vandoma</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">51</span></td><td>700 a 710</td><td><b>Sim Edit</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">47</span></td><td>750</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">52</span></td><td>800 a 850</td><td><b>Ribas/Amcor</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">64</span></td><td>820</td><td><b>ISIS</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">65</span></td><td>860</td><td><b>Aluminio</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">57</span></td><td>920</td><td><b>Ribas</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">59</span></td><td>945</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">60</span></td><td>980</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">68</span></td><td>1040</td><td><b>Orep</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">53</span></td><td>1050 a 1070</td><td><b>Palmela</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">54</span></td><td>1080 a 1100</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">62</span></td><td>1100</td><td><b>Espigas Amcor</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">55</span></td><td>1140</td><td><b>AMCOR</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">61</span></td><td>1200</td><td><b>Ribas</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">56</span></td><td>1340 a 1360</td><td><b>Ribas</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">58</span></td><td>1500</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">74</span></td><td>1290 - Espiga c/ peça Rotolux</td><td><b>Sparflex</b></td><td><span class="alerta-critico">39</span></td><td><span class="alerta-critico">13</span></td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">73</span></td><td>1400</td><td><b>Vitrocelle</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">72</span></td><td>1450 - Espiga</td><td><b>PlasBritos</b></td><td class="vazio-cell">—</td><td class="vazio-cell">—</td></tr>					<tr class="linha-par"><td><span class="pille-prog">66</span></td><td>1470</td><td><b>Ribas Complexadora</b></td><td class="vazio-cell">—</td><td class="vazio-cell">—</td></tr>
+					<tr><td><span class="pille-prog">63</span></td><td>1370</td><td><b>AMCOR Triplexagem</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">71</span></td><td>935 - 1635 c/ espiga</td><td><b>NavePrinter</b></td><td><span class="alerta-critico">38</span></td><td class="vazio-cell">—</td></tr>
+					<tr><td><span class="pille-prog">67</span></td><td>1890</td><td><b>Dias Ruivo Esp.</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">76</span></td><td>1070</td><td><b>Ribas Complexagem</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">75</span></td><td>850</td><td><b>Aluminio Furo Helios</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">77</span></td><td>Polikote 1680</td><td><b>Politcote</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">78</span></td><td>Endutex 1600</td><td><b>Endutex</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">79</span></td><td>Helios 850</td><td><b>Helios</b></td><td>30/32/33</td><td>10/15</td></tr>
+					<tr><td><span class="pille-prog">81</span></td><td>1360 - 1885 c/ espigas</td><td><b>Rolo Sedacor</b></td><td><span class="alerta-critico">21</span></td><td><span class="alerta-critico">12</span></td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">82</span></td><td>1010</td><td class="vazio-cell">—</td><td>30/32/33</td><td>10/15</td></tr>
+					<tr>
+						<td><span class="pille-prog">83</span></td>
+						<td>660</td>
+						<td><b>HG Print FA</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">84</span></td>
+						<td>1020 - 1460 c/ espigas</td>
+						<td><b>Amcor SPS</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">85</span></td>
+						<td>1130 - 1950 c/ espigas</td>
+						<td><b>Amcor SPS</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">86</span></td>
+						<td>1040 - 1120 C/ Peças</td>
+						<td><b>Papeterie</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">87</span></td>
+						<td>550 C/ "Veios"</td>
+						<td><b>Sparflex</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">88</span></td>
+						<td>1055 - 1575 c/ veio</td>
+						<td><b>Richard</b></td>
+						<td><span class="alerta-critico">42</span></td>
+						<td><span class="alerta-critico">14</span></td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">89</span></td>
+						<td>870</td>
+						<td><b>Saint Maur</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">90</span></td>
+						<td>1934</td>
+						<td><b>HG Mateus</b></td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">91</span></td>
+						<td>1300 espigas</td>
+						<td><b>MoldTech</b></td>
+						<td><span class="alerta-critico">23</span></td>
+						<td class="vazio-cell">—</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">92</span></td>
+						<td>850 - 924</td>
+						<td><b>Helios</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">93</span></td>
+						<td>880</td>
+						<td><b>HG Tubau</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">94</span></td>
+						<td>610 - 700</td>
+						<td><b>Distripac c/ peça Helios</b></td>
+						<td>30/32/33</td>
+						<td>10/15</td>
+					</tr>
+					<tr>
+						<td><span class="pille-prog">95</span></td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+					</tr>
+					<tr class="linha-par">
+						<td><span class="pille-prog">96</span></td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+						<td class="vazio-cell">—</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

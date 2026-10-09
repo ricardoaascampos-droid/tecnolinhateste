@@ -1,0 +1,265 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master LA2 - Kaspar Walter Line</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	/* Botão Voltar */
+	.navigation-area {
+		text-align: left;
+		margin-bottom: 25px;
+	}
+	
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #ffffff;
+		color: #475569;
+		text-decoration: none;
+		border-radius: 6px;
+		font-weight: 600;
+		font-size: 10pt;
+		border: 1px solid #e2e8f0;
+		transition: all 0.15s ease;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	}
+	.btn-voltar:hover {
+		background-color: #edf2f7;
+		color: #0f172a;
+	}
+
+	/* Grelha de Cartões Dinâmica (Focada em 2 colunas uniformes) */
+	.button-grid {
+		display: inline-block;
+		width: 100%;
+		max-width: 640px; 
+		margin: 0 auto;
+	}
+
+	.grid-row {
+		margin-bottom: 16px;
+		clear: both;
+		display: flex;
+		gap: 16px;
+		justify-content: center;
+	}
+
+	/* Botão Base com Degradê Suave Fluído */
+	.btn-maquina {
+		display: block;
+		width: 300px;
+		height: 75px;
+		text-decoration: none;
+		border-radius: 8px;
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(to right, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+		border: 1px solid #cbd5e1;
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+		transition: all 0.25s ease;
+		box-sizing: border-box;
+	}
+
+	/* Configuração das Imagens PNG à direita sem cortes */
+	.bg-img {
+		position: absolute;
+		top: 5px; 
+		right: 10px; 
+		width: 50%;
+		height: calc(100% - 10px);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right center;
+		transition: transform 0.25s ease;
+		z-index: 1;
+	}
+
+	/* Película de Integração Suave */
+	.overlay {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: linear-gradient(to right, rgba(255,255,255,0.8) 35%, rgba(255,255,255,0) 100%);
+		z-index: 2;
+		transition: all 0.2s ease;
+	}
+
+	/* Texto Técnico à esquerda */
+	.text-label {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 20px;
+		color: #1e293b;
+		font-size: 11.5pt;
+		font-weight: 700;
+		letter-spacing: 0.2px;
+		box-sizing: border-box;
+	}
+
+	/* Botão de Destaque Mestre Superior (Largura Única do Topo) */
+	.btn-master-full {
+		width: 616px;
+		height: 60px;
+	}
+	.btn-master-full .text-label {
+		justify-content: center;
+		padding-left: 0;
+		font-size: 13pt;
+		text-transform: uppercase;
+	}
+	.btn-master-full .bg-img { width: 30%; }
+
+	/* Estilo Master PC (Azul Corporativo) */
+	.btn-master-style {
+		background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+		border: 2px solid #2563eb;
+	}
+	.btn-master-style .text-label { color: #1e3a8a; }
+	.btn-master-style .overlay {
+		background: linear-gradient(to right, rgba(239,246,255,0.8) 45%, rgba(239,246,255,0) 100%);
+	}
+
+	/* Efeitos Hover Gerais */
+	.btn-maquina:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 18px -3px rgba(37, 99, 235, 0.12);
+		border-color: #2563eb;
+		background: linear-gradient(to right, #ffffff 0%, #eff6ff 65%, #dbeafe 100%);
+	}
+	.btn-maquina:hover .bg-img { transform: scale(1.05); }
+	.btn-maquina:hover .text-label { color: #2563eb; }
+	.btn-maquina:hover .overlay {
+		background: linear-gradient(to right, rgba(248,250,252,1) 45%, rgba(248,250,252,0.1) 100%);
+	}
+
+	/* Destaque Visual Laranja Suave para o Cobre CO 14 */
+	.btn-cumax {
+		border-left: 4px solid #ea580c;
+		background: linear-gradient(to right, #ffffff 0%, #fff7ed 60%, #ffedd5 100%);
+	}
+	.btn-cumax .text-label { color: #c2410c; }
+	.btn-cumax .overlay {
+		background: linear-gradient(to right, rgba(255,247,237,0.8) 35%, rgba(255,247,237,0) 100%);
+	}
+	.btn-cumax:hover {
+		border-color: #ea580c;
+		background: linear-gradient(to right, #ffffff 0%, #ffedd5 50%, #fed7aa 100%);
+	}
+	.btn-cumax:hover .text-label { color: #ea580c; }
+
+	.btn-maquina:active { transform: translateY(0); }
+
+	/* MAPEAMENTO DOS SEUS ARQUIVOS .PNG PARA A LINHA 2 */
+	.img-master2 { background-image: url('images/la2_master.jpg'); }
+	.img-grua2   { background-image: url('images/la2_po23.png'); }
+	.img-pl12    { background-image: url('images/la2_pl12.png'); }
+	.img-dg12    { background-image: url('images/la2_dg12.png'); }
+	.img-cr12    { background-image: url('images/la2_cr12.png'); }
+	.img-co14    { background-image: url('images/la2_co14.png'); }
+	.img-al01    { background-image: url('images/la2_al01.png'); }
+	.img-k503    { background-image: url('images/la2_ge06.png'); }
+	.img-k504    { background-image: url('images/la2_ge08.png'); }
+</style>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+	<!-- Botão Voltar Superior -->
+	<div class="navigation-area">
+		<a href="if1.htm" class="btn-voltar">&larr; Voltar</a>
+	</div>
+
+	<div class="button-grid">
+		
+		<!-- Linha de Topo: Master LA2 (Largura Total Centralizadora) -->
+		<div class="grid-row">
+			<a href="masterLA2.htm" class="btn-maquina btn-master-full btn-master-style" title="Master LA2">
+				<div class="bg-img img-master2"></div>
+				<div class="overlay"></div>
+				<div class="text-label">Master LA2</div>
+			</a>
+		</div>
+
+		<!-- Linha 1: Grua LA2 e LI12 -->
+		<div class="grid-row">
+			<a href="po23.htm" class="btn-maquina" title="Grua LA2">
+				<div class="bg-img img-grua2"></div>
+				<div class="overlay"></div>
+				<div class="text-label">Grua LA2</div>
+			</a>
+			<a href="pl12.htm" class="btn-maquina" title="PL12">
+				<div class="bg-img img-pl12"></div>
+				<div class="overlay"></div>
+				<div class="text-label">PL12</div>
+			</a>
+		</div>
+
+		<!-- Linha 2: Cubas Químicas de Processo (DG12 e CR12) -->
+		<div class="grid-row">
+			<a href="dg12.htm" class="btn-maquina" title="DG12">
+				<div class="bg-img img-dg12"></div>
+				<div class="overlay"></div>
+				<div class="text-label">DG12</div>
+			</a>
+			<a href="cr12.htm" class="btn-maquina" title="CR12">
+				<div class="bg-img img-cr12"></div>
+				<div class="overlay"></div>
+				<div class="text-label">CR12</div>
+			</a>
+		</div>
+
+		<!-- Linha 3: UNIFORMIZAÇÃO - Cobreamento Simplificado e Módulo AL01 Novo -->
+		<div class="grid-row">
+			<a href="co14.htm" class="btn-maquina btn-cumax" title="CO14">
+				<div class="bg-img img-co14"></div>
+				<div class="overlay"></div>
+				<div class="text-label">CO14</div>
+			</a>
+			<a href="al01.htm" class="btn-maquina" title="AL01">
+				<div class="bg-img img-al01"></div>
+				<div class="overlay"></div>
+				<div class="text-label">AL01</div>
+			</a>
+		</div>
+
+		<!-- Linha 4: UNIFORMIZAÇÃO - Estações de Hardware GE Lado a Lado (GE06 e GE08) -->
+		<div class="grid-row">
+			<a href="la2_k503.htm" class="btn-maquina" title="GE06 - K503">
+				<div class="bg-img img-k503"></div>
+				<div class="overlay"></div>
+				<div class="text-label">GE06 - K503</div>
+			</a>
+			<a href="la2_k504.htm" class="btn-maquina" title="GE08 - K504">
+				<div class="bg-img img-k504"></div>
+				<div class="overlay"></div>
+				<div class="text-label">GE08 - K504</div>
+			</a>
+		</div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Controlo Central</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		color: #1e293b;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	/* Estrutura dos Indicadores de Estado (KPI Cards) no Topo Direto */
+	.status-row {
+		display: table;
+		width: 100%;
+		border-spacing: 12px;
+		margin-left: -12px;
+		margin-right: -12px;
+		margin-bottom: 20px;
+	}
+
+	.status-card {
+		display: table-cell;
+		width: 33.33%;
+		background: #ffffff;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		padding: 14px 18px;
+		vertical-align: middle;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+	}
+
+	.status-label {
+		font-size: 8.5pt;
+		font-weight: 700;
+		color: #64748b;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		margin-bottom: 4px;
+	}
+
+	.status-value {
+		font-size: 13pt;
+		font-weight: 700;
+		color: #0f172a;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	/* Luzes de Sinalização Operacional */
+	.led-indicator {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+	}
+	.led-verde { background-color: #22c55e; box-shadow: 0 0 8px #22c55e; }
+	.led-azul { background-color: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
+
+	/* Card Hero do Dashboard */
+	.welcome-card {
+		background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+		color: #ffffff;
+		border-radius: 10px;
+		padding: 24px 30px;
+		margin-bottom: 25px;
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+	}
+
+	.welcome-card h1 {
+		font-size: 20pt;
+		margin: 0 0 8px 0;
+		font-weight: 700;
+	}
+
+	.welcome-card p {
+		font-size: 11pt;
+		margin: 0;
+		opacity: 0.9;
+		line-height: 1.5;
+	}
+
+	/* Caixa de Alerta / Informação de Diagnóstico Corrigida com Margem Superior */
+	.info-diagnostic-box {
+		background-color: #eff6ff;
+		border: 1px solid #bfdbfe;
+		border-left: 5px solid #2563eb;
+		border-radius: 6px;
+		padding: 14px 20px;
+		margin-top: 5px;
+		margin-bottom: 30px;
+		font-size: 10.5pt;
+		line-height: 1.5;
+		color: #1e40af;
+	}
+
+	/* Grelha de Módulos Operacionais */
+	.menu-grid {
+		display: table;
+		width: 100%;
+		border-spacing: 16px;
+		margin-left: -16px;
+		margin-right: -16px;
+	}
+
+	.menu-row {
+		display: table-row;
+	}
+
+	/* Cards de Conteúdo Profissional (Toque UI/UX) */
+	.menu-box {
+		display: table-cell;
+		width: 33.33%;
+		background: #ffffff;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		padding: 20px;
+		vertical-align: top;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+	}
+
+	.box-icon-container {
+		height: 55px;
+		margin-bottom: 15px;
+		text-align: center;
+	}
+
+	.box-title {
+		font-size: 12pt;
+		font-weight: 700;
+		color: #0f172a;
+		margin-bottom: 8px;
+		border-bottom: 1px solid #f1f5f9;
+		padding-bottom: 6px;
+	}
+
+	.box-desc {
+		font-size: 9.5pt;
+		color: #64748b;
+		line-height: 1.45;
+	}
+
+	.footer-info {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 9pt;
+		color: #94a3b8;
+		border-top: 1px solid #e2e8f0;
+		padding-top: 20px;
+		letter-spacing: 0.5px;
+	}
+</style>
+
+<!-- Script do Relógio Industrial em Tempo Real -->
+<script language="JavaScript">
+<!--
+function atualizarRelogio() {
+	var agora = new Date();
+	var dia = String(agora.getDate()).padStart(2, '0');
+	var mes = String(agora.getMonth() + 1).padStart(2, '0');
+	var ano = agora.getFullYear();
+	var horas = String(agora.getHours()).padStart(2, '0');
+	var minutes = String(agora.getMinutes()).padStart(2, '0');
+	var segundos = String(agora.getSeconds()).padStart(2, '0');
+	
+	var dataFormatada = dia + "/" + mes + "/" + ano;
+	var horaFormatada = horas + ":" + minutes + ":" + segundos;
+	
+	document.getElementById("lblData").innerHTML = dataFormatada;
+	document.getElementById("lblHora").innerHTML = horaFormatada;
+	
+	setTimeout(atualizarRelogio, 1000);
+}
+// -->
+</script>
+</head>
+
+<body onload="atualizarRelogio()">
+
+<div class="main-wrapper">
+
+	<!-- Indicadores de Estado Simulados no Topo Absoluto -->
+	<div class="status-row">
+		<div class="status-card">
+			<div class="status-label">Estado Linha Auto 1</div>
+			<div class="status-value">
+				<span class="led-indicator led-verde"></span> Ligada / Online
+			</div>
+		</div>
+		<div class="status-card">
+			<div class="status-label">Estado Linha Auto 2</div>
+			<div class="status-value">
+				<span class="led-indicator led-verde"></span> Ligada / Online
+			</div>
+		</div>
+		<div class="status-card">
+			<div class="status-label">Data e Hora do Sistema</div>
+			<div class="status-value" style="color: #2563eb;">
+				<span class="led-indicator led-azul"></span>
+				<span id="lblData">--/--/----</span>&nbsp;&bull;&nbsp;<span id="lblHora">00:00:00</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mensagem Dinâmica do Operador -->
+	<div class="welcome-card">
+		<h1>Painel de Controlo Central</h1>
+		<p>Utilize o menu lateral esquerdo para navegar e carregar as tabelas completas de engenharia e produção da fábrica.</p>
+	</div>
+
+	<!-- Nota Informativa de Diagnóstico e Erros Afastada Otimizada -->
+	<div class="info-diagnostic-box">
+		ℹ️ <strong>INFORMAÇÃO:</strong> Os painéis operacionais da <strong>Linha Auto 1</strong> e da <strong>Linha Auto 2</strong> encontram-se totalmente disponíveis para consulta de erros de comunicação, mapeamento de hardware de estações (GE) e parametrização técnica das cubas galvânicas.
+	</div>
+
+	<!-- Grelha Operacional Avançada com Pré-visualização SVG -->
+	<div class="menu-grid">
+		<div class="menu-row">
+			
+			<!-- Módulo 1: Folhas de Instrução (Corrigido!) -->
+			<div class="menu-box">
+				<div class="box-icon-container">
+					<svg viewBox="0 0 100 50" width="100%" height="100%">
+						<rect x="35" y="5" width="30" height="40" rx="3" fill="none" stroke="#2563eb" stroke-width="2"/>
+						<line x1="42" y1="15" x2="58" y2="15" stroke="#cbd5e1" stroke-width="2"/>
+						<line x1="42" y1="23" x2="58" y2="23" stroke="#2563eb" stroke-width="2"/>
+						<line x1="42" y1="31" x2="52" y2="31" stroke="#cbd5e1" stroke-width="2"/>
+					</svg>
+				</div>
+				<div class="box-title">Folhas de Instrução</div>
+				<div class="box-desc">Códigos de processos (Cobre e Crómio), passwords de fábrica, chaves de gruas e parametrização técnica de cones.</div>
+			</div>
+
+			<!-- Módulo 2: Medidas e Cilindros -->
+			<div class="menu-box">
+				<div class="box-icon-container">
+					<svg viewBox="0 0 120 50" width="100%" height="100%">
+						<rect x="5" y="20" width="15" height="10" rx="1" fill="#94a3b8"/>
+						<rect x="100" y="20" width="15" height="10" rx="1" fill="#94a3b8"/>
+						<rect x="20" y="10" width="80" height="30" rx="2" fill="#1e3a8a"/>
+						<line x1="20" y1="46" x2="100" y2="46" stroke="#475569" stroke-width="1" stroke-dasharray="2 2"/>
+					</svg>
+				</div>
+				<div class="box-title">Medidas Cilindros</div>
+				<div class="box-desc">Especificações técnicas detalhadas por cliente com desenho vetorial de delimitação de mesas e espigas.</div>
+			</div>
+
+			<!-- Módulo 3: Prog. Manual Polimento (Uniformizado!) -->
+			<div class="menu-box">
+				<div class="box-icon-container">
+					<svg viewBox="0 0 100 50" width="100%" height="100%">
+						<rect x="15" y="15" width="70" height="20" rx="2" fill="#94a3b8"/>
+						<line x1="25" y1="25" x2="75" y2="25" stroke="#dc2626" stroke-width="2"/>
+						<circle cx="50" cy="25" r="4" fill="#dc2626"/>
+					</svg>
+				</div>
+				<div class="box-title">Prog. Manual Polimento</div>
+				<div class="box-desc">Tabela de filtragem em tempo real para polimento manual de cilindros com destaque para medidas críticas.</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footer-info">
+		PAINEL INFORMATIVO TÉCNICO INTEGRADO &bull; MONITORIZAÇÃO DO SISTEMA ATIVA
+	</div>
+
+</div>
+
+</body>
+</html>

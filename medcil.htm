@@ -1,0 +1,335 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Informativo - Medidas e Peças</title>
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f4f6f9;
+		margin: 0;
+		padding: 20px;
+		color: #333333;
+		text-align: center;
+	}
+
+	.main-wrapper {
+		max-width: 1000px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 20px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+
+	.search-box-container {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.search-input {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 12px 15px;
+		font-size: 11pt;
+		border: 2px solid #cbd5e1;
+		border-radius: 6px;
+		background-color: #ffffff;
+		color: #334155;
+	}
+	
+	.search-input:focus {
+		border-color: #3b82f6;
+		outline: none;
+	}
+
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 11pt;
+	}
+
+	/* Cabeçalho Visual Premium */
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		font-size: 9.5pt;
+		padding: 15px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: center;
+		vertical-align: bottom;
+	}
+
+	.th-grafico-container {
+		display: inline-block;
+		margin-top: 8px;
+		width: 140px;
+		height: 50px;
+	}
+
+	td {
+		padding: 12px 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		text-align: center;
+	}
+
+	.linha-par {
+		background-color: #f8fafc;
+	}
+
+	.cliente-nome {
+		font-weight: bold;
+		color: #1e293b;
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.detalhe-peca {
+		color: #2563eb;
+		font-size: 9.5pt;
+		background-color: #eff6ff;
+		padding: 3px 8px;
+		border-radius: 4px;
+		font-weight: bold;
+		display: inline-block;
+	}
+</style>
+
+<script language="JavaScript">
+<!--
+function filtrarTabela() {
+	var input = document.getElementById("txtPesquisa");
+	var filter = input.value.toLowerCase();
+	var table = document.getElementById("tabelaEspecificacoes");
+	var tr = table.getElementsByTagName("tr");
+
+	for (var i = 1; i < tr.length; i++) {
+		var exibir = false;
+		var td = tr[i].getElementsByTagName("td");
+		
+		for (var j = 0; j < td.length; j++) {
+			if (td[j]) {
+				var txtValue = td[j].textContent || td[j].innerText;
+				if (txtValue.toLowerCase().indexOf(filter) > -1) {
+					exibir = true;
+					break;
+				}
+			}
+		}
+		tr[i].style.display = exibir ? "" : "none";
+	}
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+	<div class="dashboard-card">
+		
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Especificações de Clientes e Medidas</h1></td>
+				<td align="right"><a href="if1.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<div class="search-box-container">
+			<input type="text" id="txtPesquisa" class="search-input" onkeyup="filtrarTabela()" placeholder="Pesquise por cliente, mesa ou valores...">
+		</div>
+
+		<div class="table-container">
+			<table id="tabelaEspecificacoes">
+				<thead>
+					<tr>
+						<th style="width: 25%; text-align: left; padding-left: 20px;">Cliente / Linha</th>
+						<th style="width: 21%;">Tipo / Detalhe</th>
+						
+						<!-- Cabeçalho Inovador: MESA com Gráfico -->
+						<th style="width: 18%;">
+							<div>MESA</div>
+							<div class="th-grafico-container">
+								<svg viewBox="0 0 140 50" width="100%" height="100%">
+									<!-- Cilindro Base Esboçado -->
+									<rect x="15" y="18" width="10" height="14" rx="2" fill="#cbd5e1"/>
+									<rect x="115" y="18" width="10" height="14" rx="2" fill="#cbd5e1"/>
+									<!-- Destaque visual apenas na MESA -->
+									<rect x="25" y="10" width="90" height="30" rx="3" fill="#1e3a8a"/>
+									<!-- Texto ou Cota limitadora -->
+									<line x1="25" y1="44" x2="115" y2="44" stroke="#475569" stroke-width="1.5" stroke-dasharray="2 2"/>
+									<path d="M 25 41 L 25 47 M 115 41 L 115 47" stroke="#475569" stroke-width="1.5"/>
+								</svg>
+							</div>
+						</th>
+						
+						<!-- Cabeçalho Inovador: VALOR 1 (Cilindro Base / Limite Mesa) -->
+						<th style="width: 18%;">
+							<div>VALOR 1</div>
+							<div class="th-grafico-container">
+								<svg viewBox="0 0 140 50" width="100%" height="100%">
+									<!-- Corpo sem peças adicionais -->
+									<rect x="25" y="12" width="90" height="26" rx="2" fill="#94a3b8"/>
+									<!-- Linhas de Cota limitadas estritamente à mesa -->
+									<line x1="25" y1="44" x2="115" y2="44" stroke="#2563eb" stroke-width="1.5"/>
+									<polygon points="25,44 31,41 31,47" fill="#2563eb"/>
+									<polygon points="115,44 109,41 109,47" fill="#2563eb"/>
+									<line x1="25" y1="38" x2="25" y2="46" stroke="#94a3b8" stroke-width="1"/>
+									<line x1="115" y1="38" x2="115" y2="46" stroke="#94a3b8" stroke-width="1"/>
+								</svg>
+							</div>
+						</th>
+						
+						<!-- Cabeçalho Inovador: VALOR 2 (Com Espigas / Comprimento Total) -->
+						<th style="width: 18%;">
+							<div>VALOR 2</div>
+							<div class="th-grafico-container">
+								<svg viewBox="0 0 140 50" width="100%" height="100%">
+									<!-- Espigas laterais visíveis -->
+									<rect x="5" y="20" width="20" height="10" rx="1" fill="#64748b"/>
+									<rect x="115" y="20" width="20" height="10" rx="1" fill="#64748b"/>
+									<!-- Corpo da Mesa -->
+									<rect x="25" y="12" width="90" height="26" rx="2" fill="#94a3b8"/>
+									<!-- Cota Total de ponta a ponta (Mesa + Espigas) -->
+									<line x1="5" y1="44" x2="135" y2="44" stroke="#dc2626" stroke-width="1.5"/>
+									<polygon points="5,44 11,41 11,47" fill="#dc2626"/>
+									<polygon points="135,44 129,41 129,47" fill="#dc2626"/>
+									<line x1="5" y1="30" x2="5" y2="46" stroke="#64748b" stroke-width="1"/>
+									<line x1="135" y1="30" x2="135" y2="46" stroke="#64748b" stroke-width="1"/>
+								</svg>
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Bloco Techy / Soplaril / Rotolux -->
+					<tr><td class="cliente-nome">Techy</td><td>—</td><td>1000</td><td>1000</td><td>1662</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Soplaril</td><td>—</td><td>1010</td><td>1010</td><td>1672</td></tr>
+					<tr><td class="cliente-nome">Rotolux (Belgica)</td><td>—</td><td>1280</td><td>1280</td><td>2060</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Fundo Triplexagem</td><td>Só Polidora</td><td>1370</td><td>1370</td><td>1900</td></tr>
+					<tr><td class="cliente-nome">Fundo Triplexagem</td><td>—</td><td>1200</td><td>1200</td><td>1892</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Fundo Triplexagem</td><td>—</td><td>1500</td><td>1500</td><td>2162</td></tr>
+					
+					<!-- Bloco Sim'Edit / Pack / HG -->
+					<tr><td class="cliente-nome">Sim'Edit</td><td><span class="detalhe-peca">C / Peças + 50</span></td><td>710</td><td>710</td><td>760</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">I.C. Pack</td><td>—</td><td>750</td><td>750</td><td>794</td></tr>
+					<tr><td class="cliente-nome">HG "Print Fa"</td><td><span class="detalhe-peca">C / Peças HG</span></td><td>660</td><td>660</td><td>734</td></tr>
+					
+					<!-- Bloco Helios / Hueco / Papcart -->
+					<tr class="linha-par"><td class="cliente-nome">HELIOS</td><td><span class="detalhe-peca">C / Peças + 80</span></td><td>710</td><td>710</td><td>790</td></tr>
+					<tr><td class="cliente-nome">Huecograbados</td><td>—</td><td>1170</td><td>1170</td><td>1770</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Papcart veios</td><td>—</td><td>730</td><td>730</td><td>810</td></tr>
+					<tr><td class="cliente-nome">Sim'Edit</td><td><span class="detalhe-peca">C / Peças Sim'Edit</span></td><td>730</td><td>730</td><td>794</td></tr>
+					
+					<!-- Bloco CPC / AMCOR / Tubau -->
+					<tr class="linha-par"><td class="cliente-nome">CPC - COTENTIN</td><td>—</td><td>850</td><td>850</td><td>930</td></tr>
+					<tr><td class="cliente-nome">AMCOR SPS</td><td><span class="detalhe-peca">C / Peças</span></td><td>1020</td><td>1020</td><td>1460</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">AMCOR SPS</td><td>—</td><td>1130</td><td>1130</td><td>1950</td></tr>
+					<tr><td class="cliente-nome">HG Tubau</td><td><span class="detalhe-peca">peça neocel</span></td><td>860</td><td>860</td><td>880</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">HG Tubau</td><td>—</td><td>860</td><td>860</td><td>934</td></tr>
+					
+					<!-- Bloco Complexagem / MLB / Afrique -->
+					<tr><td class="cliente-nome">Complexagem Ribas</td><td>—</td><td>1070</td><td>1070</td><td>1570</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">MLB</td><td><span class="detalhe-peca">C / Peças</span></td><td>630</td><td>630</td><td>740</td></tr>
+					<tr><td class="cliente-nome">Helio Afrique</td><td>—</td><td>800</td><td>800</td><td>865</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Complexagem Ribas</td><td>—</td><td>1470</td><td>1470</td><td>2030</td></tr>
+					
+					<!-- Bloco SPLC / Vitrocelle / Poitou / Paviot / Neocel -->
+					<tr><td class="cliente-nome">Complexagem SPLC</td><td>—</td><td>1300</td><td>1300</td><td>1900</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Vitrocelle</td><td>—</td><td>1400</td><td>1400</td><td>2050</td></tr>
+					<tr><td class="cliente-nome">Papeteriu du Poitou</td><td>—</td><td>750</td><td>750</td><td>814</td></tr>
+					<tr class="linha-par"><td class="cliente-nome">Papeteriu du Poitou</td><td>—</td><td>1060</td><td>1060</td><td>1500</td></tr>
+					<tr>
+						<td class="cliente-nome">Papeteriu du Poitou</td>
+						<td>—</td>
+						<td>1040</td>
+						<td>1040</td>
+						<td>1104</td>
+					</tr>
+					<tr class="linha-par">
+						<td class="cliente-nome">Neocel Espigas</td>
+						<td>—</td>
+						<td>1050</td>
+						<td>1050</td>
+						<td>1790</td>
+					</tr>
+					<tr>
+						<td class="cliente-nome">Papiers Paviot</td>
+						<td>—</td>
+						<td>1250</td>
+						<td>1250</td>
+						<td>1710</td>
+					</tr>
+					<tr class="linha-par">
+						<td class="cliente-nome">Ribas</td>
+						<td><span class="detalhe-peca">C / Peças</span></td>
+						<td>850</td>
+						<td>850</td>
+						<td>910</td>
+					</tr>
+					<tr>
+						<td class="cliente-nome">Soplaril</td>
+						<td><span class="detalhe-peca">Espiga Oval</span></td>
+						<td>1080</td>
+						<td>1080</td>
+						<td>1700</td>
+					</tr>
+					<tr class="linha-par">
+						<td class="cliente-nome">Distripac</td>
+						<td><span class="detalhe-peca">c/ peça Helios</span></td>
+						<td>610</td>
+						<td>610</td>
+						<td>700</td>
+					</tr>
+					<tr>
+						<td class="cliente-nome">Cellpack</td>
+						<td><span class="detalhe-peca">espiga c/ peça ( C / Peças )</span></td>
+						<td>1100</td>
+						<td>1100</td>
+						<td>1740</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Linha mandatória para adaptação perfeita em tablets e telemóveis -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Operacional - Tecnogravura</title>
+<base target="if1">
+<style>
+	/* Configuração Estrutural Base Unificada */
+	body, html { 
+		margin: 0; 
+		padding: 0; 
+		width: 100%; 
+		height: 100%; 
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+		overflow: hidden; 
+		background-color: #f8fafc; /* Fundo claro unificado */
+		-webkit-font-smoothing: antialiased;
+	}
+	
+	.container { display: flex; flex-direction: column; height: 100vh; }
+	
+	/* Topo Clean e Integrado */
+	.header { 
+		background: #ffffff; 
+		text-align: center; 
+		padding: 12px 20px; 
+		border-bottom: 1px solid #e2e8f0; 
+	}
+	.header img { max-width: 100%; height: auto; display: inline-block; vertical-align: middle; }
+	
+	/* Layout do Corpo Central */
+	.main-content { display: flex; flex: 1; height: calc(100vh - 95px); }
+	
+	/* Menu Lateral Integrado e Expansível (Fundo Igual ao Iframe) */
+	.sidebar { 
+		width: 240px; 
+		padding: 24px 16px; 
+		background: #f8fafc; /* Mesmo tom do iframe */
+		border-right: 1px solid #e2e8f0; /* Linha fina de separação elegante */
+		box-sizing: border-box; 
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		overflow-y: auto; /* Permite scroll no menu se adicionar dezenas de botões no futuro */
+	}
+	
+	.content-body { flex: 1; height: 100%; background: #f8fafc; }
+	iframe { width: 100%; height: 100%; border: none; }
+
+	/* Links do Menu Minimalistas e Livres de Imagens */
+	.nav-link {
+		display: block;
+		padding: 10px 14px;
+		color: #475569; /* Texto cinza-escuro premium */
+		text-decoration: none;
+		font-size: 10.5pt;
+		font-weight: 600;
+		border-radius: 6px;
+		transition: all 0.15s ease;
+		border-left: 3px solid transparent;
+	}
+	
+	/* Efeito Hover Limpo com Destaque Azul de Seleção */
+	.nav-link:hover {
+		background-color: #edf2f7; /* Caixa cinza-clara sutil */
+		color: #0f172a; 
+		border-left-color: #2563eb; /* Indicador azul elétrico lateral */
+		padding-left: 18px; /* Leve avanço visual */
+	}
+	
+	/* Estado Pressionado */
+	.nav-link:active {
+		background-color: #e2e8f0;
+	}
+
+	/* RESPONSIVIDADE PARA TELEMÓVEIS */
+	@media (max-width: 768px) {
+		.main-content { flex-direction: column; height: auto; }
+		.sidebar { 
+			width: 100%; 
+			flex-direction: row;
+			flex-wrap: wrap; 
+			justify-content: center; 
+			padding: 12px 8px; 
+			gap: 6px; 
+			border-right: none;
+			border-bottom: 1px solid #e2e8f0;
+			overflow-y: visible;
+		}
+		.nav-link { 
+			padding: 8px 12px; 
+			font-size: 9.5pt; 
+			border-left: none; 
+			border-bottom: 2px solid transparent;
+		}
+		.nav-link:hover {
+			padding-left: 12px;
+			transform: none;
+			border-bottom-color: #2563eb;
+		}
+		.content-body { height: 65vh; }
+	}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<!-- Topo Corporativo Original Integrado -->
+	<div class="header">
+		<a href="if1.htm"><img border="0" src="images/logo_bk_normal.png" style="width:78px; height:74px; margin-right: 15px;"></a>
+		<img border="0" src="images/tecno_bk_normal.png" style="max-width: 100%; height: auto;">
+	</div>
+
+	<!-- Corpo Único do Site -->
+	<div class="main-content">
+		<!-- Menu Lateral Aberto a Futuras Expansões -->
+		<div class="sidebar">
+			<a href="la1.htm" target="if1" class="nav-link" title="Linha Auto 1">Linha Auto 1</a>
+			<a href="la2.htm" target="if1" class="nav-link" title="Linha Auto 2">Linha Auto 2</a>
+			<a href="finstr.htm" target="if1" class="nav-link" title="Folha de instrução">Folha de Instrução</a>
+			<a href="medcil.htm" target="if1" class="nav-link" title="Medidas Cilindros">Medidas Cilindros</a>
+			<a href="progmanpol.htm" target="if1" class="nav-link" title="Prog. Manual Polimento">Prog. Manual Polimento</a>
+			
+			<!-- Se no futuro quiser criar mais botões, basta colar novas linhas aqui em baixo, assim: -->
+			<!-- <a href="pagina.htm" target="if1" class="nav-link" title="Nova Linha">Nova Linha</a> -->
+		</div>
+
+		<!-- Janela Central Unificada com a Barra Lateral -->
+		<div class="content-body">
+			<iframe name="if1" src="if1.htm" scrolling="auto">
+				Your browser does not support inline frames.
+			</iframe>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

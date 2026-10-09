@@ -1,0 +1,297 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folha de Instrução e Programas</title>
+<style>
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f4f6f9;
+		margin: 0;
+		padding: 20px;
+		color: #333333;
+		text-align: center;
+	}
+
+	.main-wrapper {
+		max-width: 1000px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	/* Banner Crítico de Produção */
+	.alert-danger-banner {
+		background-color: #fef2f2;
+		border-left: 6px solid #dc2626;
+		color: #991b1b;
+		padding: 15px 20px;
+		margin-bottom: 20px;
+		font-weight: bold;
+		font-size: 12pt;
+		border-radius: 6px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+	}
+
+	.dashboard-grid {
+		display: table;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.grid-col {
+		display: table-cell;
+		width: 50%;
+		vertical-align: top;
+	}
+
+	.grid-col-left { padding-right: 10px; }
+	.grid-col-right { padding-left: 10px; }
+
+	/* Cards Informativos (Widgets) */
+	.info-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 15px;
+		margin-bottom: 20px;
+	}
+
+	.card-title {
+		font-size: 11pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+		margin-bottom: 12px;
+	}
+
+	.password-badge {
+		background-color: #f1f5f9;
+		padding: 6px 12px;
+		border-radius: 4px;
+		display: inline-block;
+		margin-right: 10px;
+		margin-bottom: 8px;
+		font-size: 10.5pt;
+	}
+	.password-badge strong { color: #0f172a; }
+	.password-badge span { font-family: monospace; color: #2563eb; font-weight: bold; font-size: 11pt; }
+
+	.list-item-tech {
+		font-size: 10pt;
+		padding: 6px 0;
+		border-bottom: 1px solid #f1f5f9;
+		color: #334155;
+	}
+
+	/* Painel da Tabela Principal */
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 20px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+
+	.search-box-container {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.search-input {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 12px 15px;
+		font-size: 11pt;
+		border: 2px solid #cbd5e1;
+		border-radius: 6px;
+		background-color: #ffffff;
+		color: #334155;
+	}
+	
+	.search-input:focus { border-color: #3b82f6; outline: none; }
+
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 9pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: center;
+	}
+
+	td {
+		padding: 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		text-align: center;
+	}
+
+	.linha-par { background-color: #f8fafc; }
+
+	.pille-prog {
+		background-color: #eff6ff;
+		color: #2563eb;
+		font-weight: bold;
+		padding: 3px 8px;
+		border-radius: 4px;
+		font-family: monospace;
+	}
+
+	.designacao-text { font-weight: bold; text-align: left; padding-left: 15px; color: #1e293b; }
+</style>
+
+<script language="JavaScript">
+<!--
+function filtrarTabela() {
+	var input = document.getElementById("txtPesquisa");
+	var filter = input.value.toLowerCase();
+	var table = document.getElementById("tabelaProgramas");
+	var tr = table.getElementsByTagName("tr");
+
+	for (var i = 1; i < tr.length; i++) {
+		var exibir = false;
+		var td = tr[i].getElementsByTagName("td");
+		
+		for (var j = 0; j < td.length; j++) {
+			if (td[j]) {
+				var txtValue = td[j].textContent || td[j].innerText;
+				if (txtValue.toLowerCase().indexOf(filter) > -1) {
+					exibir = true;
+					break;
+				}
+			}
+		}
+		tr[i].style.display = exibir ? "" : "none";
+	}
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+	<!-- Alerta de Segurança e Engenharia no Topo -->
+	<div class="alert-danger-banner">
+		⚠️ ATENÇÃO: Os cilindros para a máquina de gravar NUNCA podem levar nenhuma peça. Essas só são utilizadas para as outras máquinas.
+	</div>
+
+	<!-- Widgets Superiores (Acesso Rápido) -->
+	<div class="dashboard-grid">
+		<!-- Bloco Esquerdo: Passwords e Parâmetros Polimento -->
+		<div class="grid-col grid-col-left">
+			<div class="info-card">
+				<div class="card-title">🔑 Passwords do Sistema</div>
+				<div class="password-badge">Grua: <span>1101</span></div>
+				<div class="password-badge">Polidora: <span>4711</span></div>
+				<div class="password-badge">K500: <span>8ung</span></div>
+			</div>
+			
+			<div class="info-card">
+				<div class="card-title">⚙️ Parâmetros de Polimento</div>
+				<div class="list-item-tech"><strong>Cobre Normal:</strong> Código 30 | <strong>Extra:</strong> Código 33</div>
+				<div class="list-item-tech"><strong>Cobre Diamante 140:</strong> Código 34 | <strong>Rz Especial:</strong> Código 17</div>
+				<div class="list-item-tech"><strong>Crómio nas Linhas:</strong> Código 10 | <strong>Na Vertical:</strong> Código 15</div>
+			</div>
+		</div>
+
+		<!-- Bloco Direito: Especificações de Cones e Notas Técnicas -->
+		<div class="grid-col grid-col-right">
+			<div class="info-card">
+				<div class="card-title">📐 Especificações Mínimas de Cones</div>
+				<div class="list-item-tech">🔸 <strong>Cones estreitos finos:</strong> Mín. 260 Perímetro / Mín. 435 Comprimento</div>
+				<div class="list-item-tech">🔸 <strong>Cones estreitos:</strong> Mín. 320 Perímetro / Mín. 410 Comprimento</div>
+				<div class="list-item-tech">🔸 <strong>Cones bicudos:</strong> Mín. 360 Perímetro / Mín. 390 Comprimento</div>
+			</div>
+
+			<div class="info-card" style="background-color: #fdfaf2;">
+				<div class="card-title" style="color: #b45309;">📝 Notas Importantes</div>
+				<div class="list-item-tech" style="border-bottom: 0;">🛠️ Polir antes de cobrear (Elimina passe grosso).</div>
+				<div class="list-item-tech" style="border-bottom: 0;">🛠️ Polir só lixa branca para cobrear (Apenas na máquina).</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Cartão da Tabela de Processos -->
+	<div class="dashboard-card">
+		
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Designação de Programas de Produção</h1></td>
+				<td align="right"><a href="if1.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<div class="search-box-container">
+			<input type="text" id="txtPesquisa" class="search-input" onkeyup="filtrarTabela()" placeholder="Pesquise por código de programa ou tipo de processo...">
+		</div>
+
+		<div class="table-container">
+			<table id="tabelaProgramas">
+				<thead>
+					<tr>
+						<th style="width: 15%;">Prog.</th>
+						<th style="width: 85%; text-align: left; padding-left: 15px;">Designação do Processo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td><span class="pille-prog">100</span></td><td class="designacao-text">Desengordurar Cromar Polir</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">101</span></td><td class="designacao-text">Desengordurar Cromar</td></tr>
+					<tr><td><span class="pille-prog">150</span></td><td class="designacao-text">Gravar</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">160</span></td><td class="designacao-text">Gravar Desengordurar Cromar Polir</td></tr>
+					<tr><td><span class="pille-prog">190</span></td><td class="designacao-text">Polir Crómio Horizontal</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">191</span></td><td class="designacao-text">Polir Crómio Vertical</td></tr>
+					<tr><td><span class="pille-prog">201</span></td><td class="designacao-text">Polir Desengordurar Cobrear</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">205</span></td><td class="designacao-text">Desengordurar Cobrear</td></tr>
+					<tr><td><span class="pille-prog">290</span></td><td class="designacao-text">Polir Cobre</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">112</span></td><td class="designacao-text">Polimento (Deseng. Manual) Cromar Polir</td></tr>
+					<tr><td><span class="pille-prog">113</span></td><td class="designacao-text">Polimento (Deseng. Manual) Cobrear</td></tr>
+					<tr class="linha-par"><td><span class="pille-prog">114</span></td><td class="designacao-text">Polir Desengordurar Cobrear (FERRO - NIQUEL)</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
