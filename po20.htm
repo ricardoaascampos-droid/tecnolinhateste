@@ -88,7 +88,7 @@
 	.check-img-box {
 		width: 100%;
 		height: 120px;
-		background-color: #f1f5f9; /* Fundo cinza limpo de proteção */
+		background-color: #f1f5f9;
 		border-radius: 6px;
 		margin-bottom: 10px;
 		overflow: hidden;
@@ -97,12 +97,13 @@
 	.check-img-box img {
 		width: 100%;
 		height: 100%;
-		object-fit: contain; /* Ajuste Pro: Encolhe a foto sem cortar ou distorcer */
+		object-fit: contain;
 		background-color: #f8fafc;
-		transition: transform 0.25s ease;
+		cursor: zoom-in; /* Cursor de lupa para indicar que é clicável */
+		transition: transform 0.2s ease;
 	}
-	.check-card:hover .check-img-box img {
-		transform: scale(1.06);
+	.check-img-box img:hover {
+		transform: scale(1.05);
 	}
 
 	.check-header {
@@ -147,7 +148,7 @@
 		padding: 14px 10px;
 		border-bottom: 1px solid #edf2f7;
 		color: #334155;
-		vertical-align: middle; /* Alinhamento vertical centralizado fica muito mais Pro */
+		vertical-align: middle;
 		text-align: left;
 	}
 
@@ -164,7 +165,7 @@
 		margin-bottom: 8px;
 	}
 
-	/* Caixa de Imagem Ajustada dentro da Tabela (Componentes) */
+	/* Caixa de Imagem Ajustada dentro da Tabela */
 	.table-img-box {
 		width: 140px;
 		height: 95px;
@@ -176,12 +177,13 @@
 	.table-img-box img {
 		width: 100%;
 		height: 100%;
-		object-fit: contain; /* Ajuste Pro: Garante que a foto do componente aparece inteira */
+		object-fit: contain;
 		background-color: #ffffff;
-		transition: transform 0.25s ease;
+		cursor: zoom-in; /* Lupa clicável */
+		transition: transform 0.2s ease;
 	}
-	.table-img-box:hover img {
-		transform: scale(1.08);
+	.table-img-box img:hover {
+		transform: scale(1.05);
 	}
 
 	.step-list {
@@ -191,7 +193,65 @@
 	}
 	.step-list li { margin-bottom: 4px; }
 	.step-highlight { font-weight: bold; color: #b45309; background-color: #fef08a; padding: 1px 4px; border-radius: 3px; }
+
+	/* INOVAÇÃO: Janela de Visualização Ampliada (Modal Lightbox) */
+	.image-viewer-modal {
+		display: none; /* Oculto por padrão */
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9); /* Fundo escuro focado */
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+		animation: abrirSuave 0.2s ease-out;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	@keyframes abrirSuave {
+		from { transform: scale(0.95); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
 </style>
+
+<!-- Script Anti-Crash para Ampliar Imagens Instantaneamente -->
+<script language="JavaScript">
+<!--
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+	modalImg.alt = elementoImg.alt;
+}
+
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
+}
+// -->
+</script>
 </head>
 
 <body>
@@ -208,12 +268,12 @@
 		</table>
 
 		<!-- SECÇÃO 1: Pontos de Verificação Obrigatórios -->
-		<div class="section-title">🔍 Pontos de Verificação Obrigatórios</div>
+		<div class="section-title">🔍 Pontos de Verificação Obrigatórios (Clique na foto para ampliar)</div>
 		<div class="check-grid">
 			
 			<div class="check-card">
 				<div class="check-img-box">
-					<img src="images/po20_largura.jpg" alt="Verificação de Largura">
+					<img src="images/po20_largura.jpg" alt="Verificação de Largura" onclick="abrirImagemMaior(this)">
 				</div>
 				<div class="check-header">1. Largura Alvo</div>
 				<div class="check-value">1500 mm</div>
@@ -221,7 +281,7 @@
 			
 			<div class="check-card">
 				<div class="check-img-box">
-					<img src="images/po20_altura.jpg" alt="Verificação de Altura">
+					<img src="images/po20_altura.jpg" alt="Verificação de Altura" onclick="abrirImagemMaior(this)">
 				</div>
 				<div class="check-header">2. Altura Alvo</div>
 				<div class="check-value">1000 mm</div>
@@ -229,7 +289,7 @@
 			
 			<div class="check-card">
 				<div class="check-img-box">
-					<img src="images/bauer_carro6.png" alt="Zona de Estacionamento">
+					<img src="images/bauer_carro6.png" alt="Zona de Estacionamento" onclick="abrirImagemMaior(this)">
 				</div>
 				<div class="check-header">3. Estacionamento</div>
 				<div class="check-value" style="color: #2563eb;">Carro 6</div>
@@ -254,7 +314,7 @@
 						<td><span class="error-badge">Erro do bus codificador elevador</span></td>
 						<td>
 							<div class="table-img-box">
-								<img src="images/po20_codificador.jpg" alt="Codificador do Elevador">
+								<img src="images/po20_codificador.jpg" alt="Codificador do Elevador" onclick="abrirImagemMaior(this)">
 							</div>
 						</td>
 						<td>
@@ -270,7 +330,7 @@
 						<td><span class="error-badge">Falha de comunicação PLC / Grua</span></td>
 						<td>
 							<div class="table-img-box">
-								<img src="images/bauer_painel.png" alt="Painel Elétrico PLC">
+								<img src="images/bauer_painel.png" alt="Painel Elétrico PLC" onclick="abrirImagemMaior(this)">
 							</div>
 						</td>
 						<td>
@@ -286,7 +346,7 @@
 						<td><span class="error-badge">Sobrecarga no motor de translação</span></td>
 						<td>
 							<div class="table-img-box">
-								<img src="images/bauer_motor.png" alt="Motor de Translação">
+								<img src="images/bauer_motor.png" alt="Motor de Translação" onclick="abrirImagemMaior(this)">
 							</div>
 						</td>
 						<td>
@@ -305,5 +365,12 @@
 	</div>
 </div>
 
+<!-- CONTAINER OCULTO DA LUPA (Só aparece ao clicar em qualquer imagem) -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn">&times;</span>
+	<img id="imgAmpliada" class="modal-content-img">
+</div>
+
 </body>
 </html>
+
