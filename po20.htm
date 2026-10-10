@@ -1,71 +1,309 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>New Page 1</title>
-<script language="JavaScript">
-<!--
-function FP_preloadImgs() {//v1.0
- var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
- for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
-}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico e Manutenção - Grua LA1 Bauer</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		color: #1e293b;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
 
-function FP_swapImg() {//v1.0
- var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
- n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
- elm.$src=elm.src; elm.src=args[n+1]; } }
-}
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
 
-function FP_getObjectByID(id,o) {//v1.0
- var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
- else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
- if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
- for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
- f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
- for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
- return null;
-}
-// -->
-</script>
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 35px;
+		margin-bottom: 16px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Grelha de Verificação Superior */
+	.check-grid {
+		display: table;
+		width: 100%;
+		border-spacing: 16px;
+		margin-left: -16px;
+		margin-right: -16px;
+	}
+
+	.check-card {
+		display: table-cell;
+		width: 33.33%;
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		padding: 12px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		vertical-align: top;
+	}
+
+	/* Caixa de Imagem Ajustada (Top Checkpoints) */
+	.check-img-box {
+		width: 100%;
+		height: 120px;
+		background-color: #f1f5f9; /* Fundo cinza limpo de proteção */
+		border-radius: 6px;
+		margin-bottom: 10px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+	}
+	.check-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain; /* Ajuste Pro: Encolhe a foto sem cortar ou distorcer */
+		background-color: #f8fafc;
+		transition: transform 0.25s ease;
+	}
+	.check-card:hover .check-img-box img {
+		transform: scale(1.06);
+	}
+
+	.check-header {
+		font-size: 8.5pt;
+		font-weight: bold;
+		color: #64748b;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	.check-value {
+		font-size: 11.5pt;
+		font-weight: bold;
+		color: #0f172a;
+	}
+
+	/* Tabela de Manutenção Ilustrada */
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+		margin-top: 10px;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 8.5pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: left;
+	}
+
+	td {
+		padding: 14px 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		vertical-align: middle; /* Alinhamento vertical centralizado fica muito mais Pro */
+		text-align: left;
+	}
+
+	.linha-par { background-color: #f8fafc; }
+
+	.error-badge {
+		background-color: #fef2f2;
+		color: #dc2626;
+		font-weight: bold;
+		padding: 4px 8px;
+		border-radius: 4px;
+		display: inline-block;
+		font-size: 9.5pt;
+		margin-bottom: 8px;
+	}
+
+	/* Caixa de Imagem Ajustada dentro da Tabela (Componentes) */
+	.table-img-box {
+		width: 140px;
+		height: 95px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid #cbd5e1;
+	}
+	.table-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain; /* Ajuste Pro: Garante que a foto do componente aparece inteira */
+		background-color: #ffffff;
+		transition: transform 0.25s ease;
+	}
+	.table-img-box:hover img {
+		transform: scale(1.08);
+	}
+
+	.step-list {
+		margin: 0;
+		padding-left: 18px;
+		line-height: 1.5;
+	}
+	.step-list li { margin-bottom: 4px; }
+	.step-highlight { font-weight: bold; color: #b45309; background-color: #fef08a; padding: 1px 4px; border-radius: 3px; }
+</style>
 </head>
 
-<body onload="FP_preloadImgs(/*url*/'images/buttonE0.jpg', /*url*/'images/buttonE1.jpg', /*url*/'images/button2C.jpg', /*url*/'images/button2D.jpg')">
+<body>
 
-<p align="left"><a href="la1.htm">
-<img border="0" id="img1" src="images/buttonDF.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE0.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonDF.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE1.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE0.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Voltar"></a></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<img border="0" id="img11" src="images/button2B2.jpg" height="60" width="300" alt="Grua LA1" onmouseover="FP_swapImg(1,0,/*id*/'img11',/*url*/'images/button2C.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img11',/*url*/'images/button2B2.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img11',/*url*/'images/button2D.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img11',/*url*/'images/button2C.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Grua LA1"></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-&nbsp;</p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="line-height: 107%; color: red"><font size="7">Erro do bus 
-codificador elevador: </font></span></p>
-<p align="center">
-<img border="0" src="images/2016-04-13%2008.21.17.jpg" width="496" height="279"></p>
-<p align="center">
-<img border="0" src="images/2016-04-13%2008.24.10.jpg" width="404" height="718"><img border="0" src="images/2016-04-13%2008.24.05.jpg" width="404" height="718"></p>
-<p align="center">&nbsp;</p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 16pt; line-height: 107%">1� passo - Verificar e 
-posicionar todos os valores padr�o da grua</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 16pt; line-height: 107%">largura : 1500&nbsp;&nbsp;&nbsp;&nbsp; altura: 
-1000&nbsp;&nbsp;&nbsp;&nbsp; estacionamento: carro 6</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:3.0cm;text-indent:-2.0cm" align="center">
-<span style="font-size: 16pt; line-height: 107%">2� passo - se algum destes 
-parametros falhar (n�o for possivel colocar nos valores padr�o), desligar por 2 
-min +/- a grua.</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 16pt; line-height: 107%">3�&nbsp; passo - ap�s reinicio 
-verificar se podem colocar nos valores padr�es e colocar.</span></p>
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<!-- Cabeçalho -->
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Manutenção Ilustrada &bull; Ponte Bauer LA1</h1></td>
+				<td align="right"><a href="la1.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<!-- SECÇÃO 1: Pontos de Verificação Obrigatórios -->
+		<div class="section-title">🔍 Pontos de Verificação Obrigatórios</div>
+		<div class="check-grid">
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/po20_largura.jpg" alt="Verificação de Largura">
+				</div>
+				<div class="check-header">1. Largura Alvo</div>
+				<div class="check-value">1500 mm</div>
+			</div>
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/po20_altura.jpg" alt="Verificação de Altura">
+				</div>
+				<div class="check-header">2. Altura Alvo</div>
+				<div class="check-value">1000 mm</div>
+			</div>
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/bauer_carro6.png" alt="Zona de Estacionamento">
+				</div>
+				<div class="check-header">3. Estacionamento</div>
+				<div class="check-value" style="color: #2563eb;">Carro 6</div>
+			</div>
+			
+		</div>
+
+		<!-- SECÇÃO 2: Tabela de Erros Ilustrada -->
+		<div class="section-title">🛠️ Lista de Erros e Procedimentos de Manutenção</div>
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th style="width: 25%;">Código / Tipo de Erro</th>
+						<th style="width: 22%;">Componente Real</th>
+						<th style="width: 53%;">Ação Corretiva e Manutenção</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr>
+						<td><span class="error-badge">Erro do bus codificador elevador</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/bauer_codificador.png" alt="Codificador do Elevador">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Verificar e posicionar todos os valores padrão da grua detalhados no topo.</li>
+								<li>Se algum destes parâmetros falhar, <span class="step-highlight">desligar a grua por 2 min +/-</span> no corte geral.</li>
+								<li>Após o arranque, reposicionar nos valores padrão e validar se o erro desapareceu.</li>
+							</ol>
+						</td>
+					</tr>
+					
+					<tr class="linha-par">
+						<td><span class="error-badge">Falha de comunicação PLC / Grua</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/bauer_painel.png" alt="Painel Elétrico PLC">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Verificar os cabos de rede e conexões nos terminais da ponte rolante.</li>
+								<li>Limpar os contactos das escovas coletoras do barramento de alimentação.</li>
+								<li>Confirmar o estado dos LEDs de link nos módulos de comunicação.</li>
+							</ol>
+						</td>
+					</tr>
+					
+					<tr>
+						<td><span class="error-badge">Sobrecarga no motor de translação</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/bauer_motor.png" alt="Motor de Translação">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Inspecionar visualmente as calhas e carris para detetar bloqueios físicos.</li>
+								<li>Verificar o alinhamento das rodas e lubrificar os rolamentos do eixo.</li>
+								<li>Medir a corrente elétrica consumida pelo inversor de frequência.</li>
+							</ol>
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
 
 </body>
-
 </html>
