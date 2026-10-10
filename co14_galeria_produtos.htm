@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria Técnica - Componentes e Produtos CO14</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 18pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Grelha Moderna de Fotos Sequenciais */
+	.gallery-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: flex-start;
+	}
+
+	.gallery-card {
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		width: calc(25dB - 15px); /* Desenha 4 colunas perfeitas no monitor */
+		width: calc(25% - 15px);
+		box-sizing: border-box;
+		padding: 10px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		transition: transform 0.2s ease, border-color 0.2s ease;
+	}
+
+	.gallery-card:hover {
+		transform: translateY(-2px);
+		border-color: #2563eb;
+	}
+
+	.img-box {
+		width: 100%;
+		height: 140px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+		margin-bottom: 10px;
+	}
+
+	.img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #ffffff;
+		cursor: zoom-in;
+	}
+
+	.step-badge {
+		background-color: #eff6ff;
+		color: #2563eb;
+		font-weight: bold;
+		font-size: 8.5pt;
+		padding: 2px 6px;
+		border-radius: 4px;
+		display: inline-block;
+		margin-bottom: 6px;
+		text-transform: uppercase;
+	}
+
+	.img-desc {
+		font-size: 9.5pt;
+		color: #475569;
+		line-height: 1.4;
+		font-weight: 500;
+	}
+
+	/* Janela de Visualização Ampliada (Lightbox) */
+	.image-viewer-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9);
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	@media (max-width: 768px) {
+		.gallery-card { width: calc(50% - 10px); }
+	}
+	@media (max-width: 480px) {
+		.gallery-card { width: 100%; }
+	}
+</style>
+
+<script language="JavaScript">
+<!--
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+}
+
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<!-- Cabeçalho de Retorno -->
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Galeria Operacional &bull; Componentes e Aditivos CO14</h1></td>
+				<td align="right"><a href="co14.htm" class="btn-voltar">&larr; Voltar à Cuba</a></td>
+			</tr>
+		</table>
+
+		<div class="section-title">Especificação de Produtos Técnicos (Clique na foto para ampliar)</div>
+
+		<!-- Grelha de Sequência de Fotos de Produtos -->
+		<div class="gallery-grid">
+			
+			<!-- Foto 1 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_produto_1.png" alt="Produto 1" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Aditivo Base</div>
+				<div class="img-desc">Concentrado HelioCopper Rapid para controlo e estabilização de dureza.</div>
+			</div>
+
+			<!-- Foto 2 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_produto_2.png" alt="Produto 2" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Eletrólito</div>
+				<div class="img-desc">Verificação do estado e pureza dos anodos de cobre na cesta galvânica.</div>
+			</div>
+
+			<!-- Foto 3 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_produto_3.png" alt="Produto 3" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Diluição</div>
+				<div class="img-desc">Utilizar estritamente Água Desmineralizada para a mistura regulamentar.</div>
+			</div>
+
+			<!-- Foto 4 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_produto_4.png" alt="Produto 4" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Análise</div>
+				<div class="img-desc">Kit de verificação laboratorial para testes periódicos de ml/Lt de banho.</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- Lupa Interativa -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn">&times;</span>
+	<img id="imgAmpliada" class="modal-content-img">
+</div>
+
+</body>
+</html>

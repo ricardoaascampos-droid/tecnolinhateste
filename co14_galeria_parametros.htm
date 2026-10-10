@@ -1,0 +1,250 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria Técnica - Parâmetros Originais CO14</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 18pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Grelha de Cards de Parâmetros */
+	.gallery-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: flex-start;
+	}
+
+	.gallery-card {
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		width: calc(25% - 15px);
+		box-sizing: border-box;
+		padding: 10px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		transition: transform 0.2s ease, border-color 0.2s ease;
+	}
+
+	.gallery-card:hover {
+		transform: translateY(-2px);
+		border-color: #2563eb;
+	}
+
+	.img-box {
+		width: 100%;
+		height: 140px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+		margin-bottom: 10px;
+	}
+
+	.img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #ffffff;
+		cursor: zoom-in;
+	}
+
+	.step-badge {
+		background-color: #eff6ff;
+		color: #2563eb;
+		font-weight: bold;
+		font-size: 8.5pt;
+		padding: 2px 6px;
+		border-radius: 4px;
+		display: inline-block;
+		margin-bottom: 6px;
+		text-transform: uppercase;
+	}
+
+	.img-desc {
+		font-size: 9.5pt;
+		color: #475569;
+		line-height: 1.4;
+		font-weight: 500;
+	}
+
+	/* Janela de Lupa Ampliada */
+	.image-viewer-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9);
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	@media (max-width: 768px) {
+		.gallery-card { width: calc(50% - 10px); }
+	}
+	@media (max-width: 480px) {
+		.gallery-card { width: 100%; }
+	}
+</style>
+
+<script language="JavaScript">
+<!--
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+}
+
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
+}
+// -->
+</script>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<!-- Cabeçalho -->
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Galeria Operacional &bull; Calibração Original CO14</h1></td>
+				<td align="right"><a href="co14.htm" class="btn-voltar">&larr; Voltar à CO14</a></td>
+			</tr>
+		</table>
+
+		<div class="section-title">Ecrãs de Referência Kaspar Walter (Clique para ampliar)</div>
+
+		<!-- Grelha de Sequência de Fotos de Parâmetros -->
+		<div class="gallery-grid">
+			
+			<!-- Foto 1 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_parametro_1.jpg" alt="Parâmetro 1" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Retificador</div>
+				<div class="img-desc">Limites nominais de Amperagem (A) e Tensão (V) de fábrica para o banho CO14.</div>
+			</div>
+
+			<!-- Foto 2 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_parametro_2.jpg" alt="Parâmetro 2" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Configuração Ah</div>
+				<div class="img-desc">Janela de ajuste ideal de Ampere-hora para controlo de dureza física.</div>
+			</div>
+
+			<!-- Foto 3 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_parametro_3.jpg" alt="Parâmetro 3" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Bombas / Filtros</div>
+				<div class="img-desc">Esquema do painel com os tempos de circulação e ciclos de filtragem originais.</div>
+			</div>
+
+			<!-- Foto 4 -->
+			<div class="gallery-card">
+				<div class="img-box">
+					<img src="images/co14_parametro_4.jpg" alt="Parâmetro 4" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="step-badge">Limites HMI</div>
+				<div class="img-desc">Print de segurança com as tolerâncias máximas de alarme do ecrã de automação.</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- Lupa Interativa -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn">&times;</span>
+	<img id="imgAmpliada" class="modal-content-img">
+</div>
+
+</body>
+</html>

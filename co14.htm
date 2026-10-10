@@ -1,94 +1,418 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>New Page 1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico e Manutenção - CO14</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		color: #1e293b;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	/* Banner Informativo Crítico */
+	.info-banner {
+		background-color: #eff6ff;
+		border-left: 6px solid #2563eb;
+		color: #1e40af;
+		padding: 16px 20px;
+		margin-bottom: 25px;
+		font-weight: bold;
+		font-size: 11.5pt;
+		border-radius: 6px;
+		line-height: 1.5;
+	}
+
+	/* Caixa de Destaque da Fórmula Química */
+	.formula-box {
+		background-color: #f0fdf4;
+		border: 1.5px solid #bbf7d0;
+		border-left: 6px solid #16a34a;
+		border-radius: 8px;
+		padding: 18px 24px;
+		margin-bottom: 25px;
+		color: #14532d;
+	}
+
+	.formula-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 6px;
+	}
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 35px;
+		margin-bottom: 16px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Grelha de Verificação Superior (Checkpoints com Links) */
+	.check-grid {
+		display: table;
+		width: 100%;
+		border-spacing: 16px;
+		margin-left: -16px;
+		margin-right: -16px;
+	}
+
+	.check-card {
+		display: table-cell;
+		width: 33.33%;
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		padding: 12px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		vertical-align: top;
+	}
+
+	/* Caixa de link da foto que indica que vai abrir uma galeria */
+	.gallery-link-box {
+		display: block;
+		width: 100%;
+		height: 120px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		margin-bottom: 10px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+		position: relative;
+	}
+	.gallery-link-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #f8fafc;
+		transition: transform 0.2s ease;
+	}
+	.gallery-link-box:hover img { transform: scale(1.05); }
+
+	/* Ícone visual de link/galeria discreto no canto da foto */
+	.gallery-badge {
+		position: absolute;
+		bottom: 6px; right: 6px;
+		background-color: rgba(15, 23, 42, 0.75);
+		color: #ffffff;
+		font-size: 8pt;
+		font-weight: bold;
+		padding: 2px 6px;
+		border-radius: 4px;
+		z-index: 10;
+	}
+
+	.check-header {
+		font-size: 8.5pt;
+		font-weight: bold;
+		color: #64748b;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	.check-value {
+		font-size: 11.5pt;
+		font-weight: bold;
+		color: #0f172a;
+	}
+
+	/* Tabela de Manutenção Ilustrada */
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+		margin-top: 10px;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 8.5pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: left;
+	}
+
+	td {
+		padding: 14px 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		vertical-align: middle;
+		text-align: left;
+	}
+
+	.linha-par { background-color: #f8fafc; }
+
+	.error-badge {
+		background-color: #fef2f2;
+		color: #dc2626;
+		font-weight: bold;
+		padding: 4px 8px;
+		border-radius: 4px;
+		display: inline-block;
+		font-size: 9.5pt;
+		margin-bottom: 8px;
+	}
+
+	.table-img-box {
+		width: 140px;
+		height: 95px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid #cbd5e1;
+	}
+	.table-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #ffffff;
+		cursor: zoom-in;
+		transition: transform 0.2s ease;
+	}
+	.table-img-box img:hover { transform: scale(1.05); }
+
+	.step-list {
+		margin: 0;
+		padding-left: 18px;
+		line-height: 1.5;
+	}
+	.step-list li { margin-bottom: 4px; }
+	.step-highlight { font-weight: bold; color: #b45309; background-color: #fef08a; padding: 1px 4px; border-radius: 3px; }
+	.step-accent { font-weight: bold; color: #991b1b; background-color: #fee2e2; padding: 1px 4px; border-radius: 3px; }
+
+	/* Janela de Visualização Ampliada (Modal Lightbox para fotos da Tabela) */
+	.image-viewer-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9);
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+	}
+</style>
+
+<!-- Script de Lupa para fotos sem link externo -->
 <script language="JavaScript">
 <!--
-function FP_preloadImgs() {//v1.0
- var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
- for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+	modalImg.alt = elementoImg.alt;
 }
 
-function FP_swapImg() {//v1.0
- var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
- n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
- elm.$src=elm.src; elm.src=args[n+1]; } }
-}
-
-function FP_getObjectByID(id,o) {//v1.0
- var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
- else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
- if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
- for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
- f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
- for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
- return null;
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
 }
 // -->
 </script>
 </head>
 
-<body onload="FP_preloadImgs(/*url*/'images/buttonE9.jpg', /*url*/'images/buttonEA.jpg', /*url*/'images/buttonF.jpg', /*url*/'images/button10.jpg', /*url*/'images/button19.jpg', /*url*/'images/button1A.jpg', /*url*/'images/button20.jpg', /*url*/'images/button21.jpg')">
+<body>
 
-<p><a href="la2.htm">
-<img border="0" id="img1" src="images/buttonE8.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonE9.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE8.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'images/buttonEA.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'images/buttonE9.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Voltar"></a></p>
-<p align="center"><a href="param_orig_co14.htm">
-<img border="0" id="img2" src="images/buttonE.jpg" height="60" width="300" alt="Parametros Originais" fp-style="fp-btn: Glass Capsule 1" fp-title="Parametros Originais" onmouseover="FP_swapImg(1,0,/*id*/'img2',/*url*/'images/buttonF.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'images/buttonE.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img2',/*url*/'images/button10.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'images/buttonF.jpg')"></a><a href="troca_cones_co14.htm"><img border="0" id="img3" src="images/button18.jpg" height="60" width="300" alt="Trocar cones" fp-style="fp-btn: Glass Capsule 1" fp-title="Trocar cones" onmouseover="FP_swapImg(1,0,/*id*/'img3',/*url*/'images/button19.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img3',/*url*/'images/button18.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img3',/*url*/'images/button1A.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img3',/*url*/'images/button19.jpg')"></a><a href="produt_co14.htm"><img border="0" id="img4" src="images/button1F.jpg" height="60" width="300" alt="Produtos CO14" fp-style="fp-btn: Glass Capsule 1" fp-title="Produtos CO14" onmouseover="FP_swapImg(1,0,/*id*/'img4',/*url*/'images/button20.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img4',/*url*/'images/button1F.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img4',/*url*/'images/button21.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img4',/*url*/'images/button20.jpg')"></a></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 24.0pt; line-height: 107%; color: red">Falha de energia 
-ou ar comprimido</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14pt">A</span><span style="font-size: 14.0pt; line-height: 107%">ntes 
-de fazer seja o que for � muito importante verificar sempre o enchimento que foi 
-aplicado para sabermos o que fazer a seguir.</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14.0pt; line-height: 107%">&nbsp;</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 24.0pt; line-height: 107%; color: red">Dureza alta ou 
-baixa</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14.0pt; line-height: 107%">
-Alterar valor do <span style="color:red">(Ah)</span> conforme necess�rio para 
-obter os valores desejados, evitando ao m�ximo mexer nos <span style="color:red">
-(ml), </span>ao subir o valor do AH (ex: passar de 65 para 70) estar�o a baixar 
-� dureza do cobre, ao baixar o valor do AH estar�o a subir � dureza do cobre, um 
-dos fatores muito importantes por vezes da diferen�a de durezas pode 
-estar no fato de a cesta ter falta de cobre em algumas zonas, sendo muito 
-importante nesta triagem a medi��o continua de dureza em 3 pontos do cilindro 
-(inicio, meio e fim), havendo outro fator a ter em conta sendo o deposito do 
-aditivo diluido, verificar se o mesmo se encontra com aditivo, caso n�o exista 
-fazer a dilui��o do mesmo na seguinte formula (1 Lt de aditivo (HelioCopper 
-Rapid Concentrate) por 17 Lt de �gua desmineralizada).</span></p>
-&nbsp;<p align="center">
-<img border="0" src="images/2015-07-02%2008.49.58.jpg" width="464" height="348"><img border="0" src="images/2015-07-03%2018.04.28.jpg" width="464" height="348"><img border="0" src="images/2016-04-18%2010.22.38.jpg" width="192" height="348"></p>
-<p align="center">&nbsp;</p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 24.0pt; line-height: 107%; color: red">Sobrecarga 
-eletr�lito</span></p>
-<p class="MsoNormal" style="margin-left:1.0cm">
-<span style="font-size: 14.0pt; line-height: 107%">1� passo � verificar n�vel do 
-banho visualmente (se estiver cheio, necess�rio retirar banho).</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:92.15pt;text-indent:-63.8pt">
-<span style="font-size: 14.0pt; line-height: 107%">2� passo � verificar sensor 
-(se no sensor estiver full e o banho estiver baixo, tem de se desmontar o sensor 
-desapertando primeiro o cabo de liga��o e deposi desapertar completamente o 
-sensor e retira-lo puxando para cima ap�s desapertado, o sensor � composto por 
-uma vara met�lica que possivelmente estar� molhada dando erro de leitura, 
-necess�rio limpar a vara e a membrana pl�stica por onde ela passa com um papel 
-seco, volta a montar tudo igual e o sensor passa a deixar de aparecer FULL e 
-passa a existir n�meros dependendo do n�vel do banho). </span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:92.15pt;text-indent:-63.8pt">&nbsp;</p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:92.15pt;text-indent:-63.8pt" align="center">
-<img border="0" src="images/IMG-20150706-WA0003.jpg" width="195" height="348"><img border="0" src="images/IMG-20150706-WA0012.jpg" width="195" height="348"></p>
-<p align="center">&nbsp;</p>
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<!-- Cabeçalho com retorno automático para a LA2 -->
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Manutenção e Diagnóstico &bull; CO14</h1></td>
+				<td align="right"><a href="la2.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<!-- Diretriz de Segurança Inicial -->
+		<div class="info-banner">
+			ℹ️ IMPORTANTE: Antes de fazer seja o que for, é muito importante verificar sempre o enchimento que foi aplicado para sabermos o que fazer a seguir.
+		</div>
+
+		<!-- Caixa da Fórmula Química (HelioCopper Rapid) -->
+		<div class="formula-box">
+			<div class="formula-title">🧪 FÓRMULA DE DILUIÇÃO ADITIVO CO14:</div>
+			<div class="formula-text">
+				Misturar <strong>1 Litro</strong> de aditivo (<strong>HelioCopper Rapid Concentrate</strong>) por cada <strong>17 Litros</strong> de água desmineralizada.
+			</div>
+		</div>
+
+		<!-- SECÇÃO 1: Pontos de Verificação com Links Ativos para as Galerias de Parâmetros -->
+		<div class="section-title">🔍 Parâmetros Originais e Galerias (Clique na foto para abrir a galeria)</div>
+		<div class="check-grid">
+			
+			<!-- Checkpoint 1 interligado com a galeria de cones -->
+			<div class="check-card">
+				<a href="co14_galeria_cones.htm" class="gallery-link-box" title="Abrir galeria de parâmetros de cones">
+					<img src="images/co14_cone.jpg" alt="Verificação e Troca de Cones">
+					<span class="gallery-badge">🔗 Ver Galeria</span>
+				</a>
+				<div class="check-header">1. Estado dos Cones</div>
+				<div class="check-value">Trocar Cones CO14</div>
+			</div>
+			
+			<!-- Checkpoint 2 interligado com a galeria de produtos -->
+			<div class="check-card">
+				<a href="co14_galeria_produtos.htm" class="gallery-link-box" title="Abrir galeria de parâmetros de produtos">
+					<img src="images/co14_produtos.png" alt="Produtos Químicos Aplicados">
+					<span class="gallery-badge">🔗 Ver Galeria</span>
+				</a>
+				<div class="check-header">2. Componentes</div>
+				<div class="check-value">Produtos CO14</div>
+			</div>
+			
+			<!-- Checkpoint 3 interligado com os parâmetros originais -->
+			<div class="check-card">
+				<a href="co14_galeria_parametros.htm" class="gallery-link-box" title="Abrir galeria de parâmetros originais">
+					<img src="images/co14_parametros.jpg" alt="Parâmetros de Fábrica Originais">
+					<span class="gallery-badge">🔗 Ver Galeria</span>
+				</a>
+				<div class="check-header">3. Calibração</div>
+				<div class="check-value">Parâmetros Originais</div>
+			</div>
+			
+		</div>
+
+		<!-- SECÇÃO 2: Tabela de Histórico de Erros Ilustrada com Lupa Interativa -->
+		<div class="section-title">🛠️ Lista de Erros e Procedimentos Corretivos</div>
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th style="width: 25%;">Código / Tipo de Erro</th>
+						<th style="width: 22%;">Componente / Referência</th>
+						<th style="width: 53%;">Ação Corretiva e Manutenção</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<!-- ERRO 1: Falha de energia ou ar comprimido -->
+					<tr>
+						<td><span class="error-badge">Falha de energia ou ar comprimido</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/co14_valvula_erro.png" alt="Painel Pneumático e Elétrico" onclick="abrirImagemMaior(this)">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Parar imediatamente qualquer operação em curso na cuba CO 14.</li>
+								<li><span class="step-highlight">Verificar rigorosamente o nível de enchimento aplicado</span> no cilindro antes de acionar comandos manuais.</li>
+								<li>Confirmar a pressão na linha geral de ar comprimido e rearmar os sistemas elétricos.</li>
+							</ol>
+						</td>
+					</tr>
+					
+					<!-- ERRO 2: Dureza alta ou baixa -->
+					<tr class="linha-par">
+					<!-- ERRO 3: Sobrecarga eletrólito (Adicionado!) -->
+					<tr>
+						<td><span class="error-badge">Sobrecarga eletrólito</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/co14_sensor_vara.png" alt="Sensor de Nivel de Eletrólito" onclick="abrirImagemMaior(this)">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li><strong>1º Passo:</strong> Verificar o nível do banho visualmente. Se estiver cheio, é necessário retirar banho.</li>
+								<li><strong>2º Passo:</strong> Se no sensor estiver escrito <strong>FULL</strong> mas o banho estiver baixo, é necessário desmontar o sensor.</li>
+								<li>Desapertar primeiro o cabo de ligação e depois desapertar completamente o sensor, retirando-o para cima.</li>
+								<li><span class="step-accent">Limpar a vara metálica e a membrana plástica</span> por onde ela passa com um papel seco (a humidade causa erro de leitura).</li>
+								<li>Voltar a montar tudo igual. O sensor deixará de indicar FULL e passará a exibir os números corretos do nível.</li>
+							</ol>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!-- CONTAINER OCULTO DA LUPA (Obrigatório para o Zoom funcionar) -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn">&times;</span>
+	<img id="imgAmpliada" class="modal-content-img">
+</div>
 
 </body>
-
 </html>
