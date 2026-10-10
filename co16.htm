@@ -1,72 +1,403 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>New Page 1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico e Manutenção - CO16 CuMax</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		color: #1e293b;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	/* Banner Informativo Crítico */
+	.info-banner {
+		background-color: #eff6ff;
+		border-left: 6px solid #2563eb;
+		color: #1e40af;
+		padding: 16px 20px;
+		margin-bottom: 25px;
+		font-weight: bold;
+		font-size: 11.5pt;
+		border-radius: 6px;
+		line-height: 1.5;
+	}
+
+	/* Inovação: Caixa de Destaque da Fórmula Química */
+	.formula-box {
+		background-color: #f0fdf4;
+		border: 1.5px solid #bbf7d0;
+		border-left: 6px solid #16a34a;
+		border-radius: 8px;
+		padding: 18px 24px;
+		margin-bottom: 25px;
+		color: #14532d;
+		box-shadow: 0 2px 4px rgba(22, 163, 74, 0.02);
+	}
+
+	.formula-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 6px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.formula-text {
+		font-size: 11pt;
+		line-height: 1.5;
+	}
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 35px;
+		margin-bottom: 16px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Grelha de Verificação Superior (Checkpoints) */
+	.check-grid {
+		display: table;
+		width: 100%;
+		border-spacing: 16px;
+		margin-left: -16px;
+		margin-right: -16px;
+	}
+
+	.check-card {
+		display: table-cell;
+		width: 33.33%;
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		padding: 12px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		vertical-align: top;
+	}
+
+	.check-img-box {
+		width: 100%;
+		height: 120px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		margin-bottom: 10px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+	}
+	.check-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #f8fafc;
+		cursor: zoom-in;
+		transition: transform 0.2s ease;
+	}
+	.check-img-box img:hover { transform: scale(1.05); }
+
+	.check-header {
+		font-size: 8.5pt;
+		font-weight: bold;
+		color: #64748b;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	.check-value {
+		font-size: 11.5pt;
+		font-weight: bold;
+		color: #0f172a;
+	}
+
+	/* Tabela de Manutenção Ilustrada */
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+		margin-top: 10px;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 8.5pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: left;
+	}
+
+	td {
+		padding: 14px 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		vertical-align: middle;
+		text-align: left;
+	}
+
+	.linha-par { background-color: #f8fafc; }
+
+	.error-badge {
+		background-color: #fef2f2;
+		color: #dc2626;
+		font-weight: bold;
+		padding: 4px 8px;
+		border-radius: 4px;
+		display: inline-block;
+		font-size: 9.5pt;
+		margin-bottom: 8px;
+	}
+
+	.table-img-box {
+		width: 140px;
+		height: 95px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid #cbd5e1;
+	}
+	.table-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #ffffff;
+		cursor: zoom-in;
+		transition: transform 0.2s ease;
+	}
+	.table-img-box img:hover { transform: scale(1.05); }
+
+	.step-list {
+		margin: 0;
+		padding-left: 18px;
+		line-height: 1.5;
+	}
+	.step-list li { margin-bottom: 4px; }
+	.step-highlight { font-weight: bold; color: #b45309; background-color: #fef08a; padding: 1px 4px; border-radius: 3px; }
+
+	/* Janela de Visualização Ampliada (Modal Lightbox) */
+	.image-viewer-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9);
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+		animation: abrirSuave 0.2s ease-out;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	@keyframes abrirSuave {
+		from { transform: scale(0.95); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+</style>
+
+<!-- Script de Lupa Interativa -->
 <script language="JavaScript">
 <!--
-function FP_swapImg() {//v1.0
- var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
- n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
- elm.$src=elm.src; elm.src=args[n+1]; } }
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+	modalImg.alt = elementoImg.alt;
 }
 
-function FP_preloadImgs() {//v1.0
- var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
- for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
-}
-
-function FP_getObjectByID(id,o) {//v1.0
- var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
- else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
- if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
- for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
- f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
- for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
- return null;
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
 }
 // -->
 </script>
 </head>
 
-<body onload="FP_preloadImgs(/*url*/'images/buttonA8.jpg', /*url*/'images/buttonA7.jpg', /*url*/'images/button26.jpg', /*url*/'images/button27.jpg', /*url*/'images/button2E.jpg', /*url*/'images/button31.jpg', /*url*/'images/button35.jpg', /*url*/'images/button36.jpg', /*url*/'images/button3B.jpg', /*url*/'images/button3C1.jpg')">
+<body>
 
-<p><a href="la1.htm">
-<img border="0" id="img3" src="images/buttonA6.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img3',/*url*/'images/buttonA7.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img3',/*url*/'images/buttonA6.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img3',/*url*/'images/buttonA8.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img3',/*url*/'images/buttonA7.jpg')" fp-style="fp-btn: Glass Capsule 1; fp-orig: 0" fp-title="Voltar"></a></p>
-<p align="center">
-<img border="0" id="img16" src="images/button3A.jpg" height="60" width="300" alt="CO 16 - CuMax" onmouseover="FP_swapImg(1,0,/*id*/'img16',/*url*/'images/button3B.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img16',/*url*/'images/button3A.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img16',/*url*/'images/button3C1.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img16',/*url*/'images/button3B.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="CO 16 - CuMax"></p>
-<p align="center">&nbsp;</p>
-<p align="center"><a href="param_orig_co16.htm">
-<img border="0" id="img6" src="images/button25.jpg" height="60" width="300" alt="Parametros Originais" onmouseover="FP_swapImg(1,0,/*id*/'img6',/*url*/'images/button26.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img6',/*url*/'images/button25.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img6',/*url*/'images/button27.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img6',/*url*/'images/button26.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Parametros Originais"></a><a href="troca_cones_co16.htm"><img border="0" id="img7" src="images/button34.jpg" height="60" width="300" alt="Trocar cones" fp-style="fp-btn: Glass Capsule 1" fp-title="Trocar cones" onmouseover="FP_swapImg(1,0,/*id*/'img7',/*url*/'images/button35.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img7',/*url*/'images/button34.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img7',/*url*/'images/button36.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img7',/*url*/'images/button35.jpg')"></a><a href="produt_co16.htm"><img border="0" id="img8" src="images/button2B.jpg" height="60" width="300" alt="Produtos CO16" onmouseover="FP_swapImg(1,0,/*id*/'img8',/*url*/'images/button2E.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img8',/*url*/'images/button2B.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img8',/*url*/'images/button31.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img8',/*url*/'images/button2E.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Produtos CO16"></a></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 24.0pt; line-height: 107%; color: red">Falha de energia 
-ou ar comprimido</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14pt">A</span><span style="font-size: 14.0pt; line-height: 107%">ntes 
-de fazer seja o que for � muito importante verificar sempre o enchimento que foi 
-aplicado para sabermos o que fazer a seguir.</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14.0pt; line-height: 107%">&nbsp;</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm" align="center">
-<span style="font-size: 24.0pt; line-height: 107%; color: red">Dureza alta ou 
-baixa</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm"><span style="font-size: 14.0pt; line-height: 107%">
-Alterar valor do <span style="color:red">(Ah)</span> conforme necess�rio para 
-obter os valores desejados, evitando ao m�ximo mexer nos <span style="color:red">
-(ml), </span>ao subir o valor do AH (ex: passar de 65 para 70) estar�o a baixar 
-� dureza do cobre, ao baixar o valor do AH estar�o a subir � dureza do cobre, sendo muito 
-importante nesta triagem a medi��o continua de dureza em 3 pontos do cilindro 
-(inicio, meio e fim), um fator a ter em conta � o deposito do aditivo diluido, 
-verificar se o mesmo se encontra com aditivo, caso n�o exista fazer a dilui��o 
-do mesmo na seguinte formula (1 Lt de aditivo (HelioCuMax GII DOSING SOLUTION) 
-por 17 Lt de �gua.</span></p>
-<p class="MsoNormal" style="margin-top:0cm;margin-right:28.3pt;margin-bottom:
-8.0pt;margin-left:1.0cm">
-<img border="0" src="images/2018-03-07%2010.12.28.jpg" width="320" height="426"></p>
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<!-- Cabeçalho com retorno automático para a LA1 -->
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Manutenção e Diagnóstico &bull; CO16</h1></td>
+				<td align="right"><a href="la1.htm" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
+
+		<!-- Diretriz de Segurança Inicial sobre o Enchimento -->
+		<div class="info-banner">
+			ℹ️ IMPORTANTE: Antes de apagar algum erro na máquina, é muito importante verificar sempre o enchimento actual para sabermos o que fazer a seguir, pode depender de ter de fazer todo o processo de novo, originando uma não conformidade por avaria de equipamento ou de poder continuar de onde parou.
+		</div>
+
+		<!-- INOVAÇÃO: Caixa de Destaque Interativa com a Fórmula Interligada -->
+		<div class="formula-box">
+			<div class="formula-title">🧪 FÓRMULA DE DILUIÇÃO do aditivo (<strong>HelioCuMax GII DOSING SOLUTION</strong>) :</div>
+			<div class="formula-text">
+				Misturar <strong>1 Litro</strong> de aditivo (<strong>HelioCuMax GII DOSING SOLUTION</strong>) por cada <strong>17 Litros</strong> de água desmineralizada.
+			</div>
+		</div>
+
+		<!-- SECÇÃO 1: Pontos de Verificação Obrigatórios (Para futuras fotos reais) -->
+		<div class="section-title">🔍 Parâmetros Originais e Trocar Cones (Clique para ampliar)</div>
+		<div class="check-grid">
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/co16_cones.png" alt="Verificação de Cones e Encaixes" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="check-header">1. Estado dos Cones</div>
+				<div class="check-value">Trocar Cones CO16</div>
+			</div>
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/co16_deposito.png" alt="Verificação do Depósito de Aditivo" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="check-header">2. Depósito Aditivo</div>
+				<div class="check-value">Verificar Nível</div>
+			</div>
+			
+			<div class="check-card">
+				<div class="check-img-box">
+					<img src="images/co16_produtos.png" alt="Produtos Químicos CO16" onclick="abrirImagemMaior(this)">
+				</div>
+				<div class="check-header">3. Produtos CO16</div>
+				<div class="check-value">Parâmetros Originais</div>
+			</div>
+			
+		</div>
+
+		<!-- SECÇÃO 2: Tabela de Histórico de Erros Ilustrada -->
+		<div class="section-title">🛠️ Lista de Erros e Procedimentos Corretivos</div>
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th style="width: 25%;">Código / Tipo de Erro</th>
+						<th style="width: 22%;">Componente / Referência</th>
+						<th style="width: 53%;">Ação Corretiva e Manutenção</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<!-- ERRO 1: Falha de energia ou ar comprimido -->
+					<tr>
+						<td><span class="error-badge">Falha de energia ou ar comprimido</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/co16_valvula_erro.png" alt="Painel Pneumático e Disjuntores" onclick="abrirImagemMaior(this)">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Verificar imediatamente o enchimento actual e depois verificar os erros.</li>
+								<li><span class="step-highlight">Verificar se as caixas de proteção estão estendidas</span> e se os sensores estão acesos.</li>
+								<li>Confirmar no ecrã se a imagem das caixas de proteção estão a piscar e verificar a pressão no controlador de pressão.</li>
+							</ol>
+						</td>
+					</tr>
+					
+					<!-- ERRO 2: Dureza alta ou baixa -->
+					<tr class="linha-par">
+						<td><span class="error-badge">Dureza alta ou baixa do cobre</span></td>
+						<td>
+							<div class="table-img-box">
+								<img src="images/co16_durometro.png" alt="Medição de Dureza do Cobre" onclick="abrirImagemMaior(this)">
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li><span class="step-highlight">Alterar o valor do (Ah) conforme necessário</span> para obter os valores desejados. Evitar ao máximo mexer nos (ml).</li>
+								<li>Entender o funcionamento: ao <strong>subir o valor do AH</strong> (ex: passar de 65Ah para 70Ah), estará a <strong>baixar a dureza</strong> do cobre. Ao <strong>baixar o valor do AH</strong>, estará a <strong>subir a dureza</strong>.</li>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!-- CONTAINER OCULTO DA LUPA (Obrigatório para o Zoom funcionar) -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn">&times;</span>
+	<img id="imgAmpliada" class="modal-content-img">
+</div>
 
 </body>
-
 </html>
