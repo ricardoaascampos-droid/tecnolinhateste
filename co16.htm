@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico e Manutenção - CO16 CuMax</title>
+<title>Diagnóstico e Manutenção - CO16</title>
 <style>
 	body {
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -66,7 +66,7 @@
 		line-height: 1.5;
 	}
 
-	/* Inovação: Caixa de Destaque da Fórmula Química */
+	/* Caixa de Destaque da Fórmula Química */
 	.formula-box {
 		background-color: #f0fdf4;
 		border: 1.5px solid #bbf7d0;
@@ -306,7 +306,7 @@ function fecharVisualizador() {
 			ℹ️ IMPORTANTE: Antes de apagar algum erro na máquina, é muito importante verificar sempre o enchimento actual para sabermos o que fazer a seguir, pode depender de ter de fazer todo o processo de novo, originando uma não conformidade por avaria de equipamento ou de poder continuar de onde parou.
 		</div>
 
-		<!-- INOVAÇÃO: Caixa de Destaque Interativa com a Fórmula Interligada -->
+		<!-- Caixa de Destaque Interativa com a Fórmula -->
 		<div class="formula-box">
 			<div class="formula-title">🧪 FÓRMULA DE DILUIÇÃO do aditivo (<strong>HelioCuMax GII DOSING SOLUTION</strong>) :</div>
 			<div class="formula-text">
@@ -314,16 +314,19 @@ function fecharVisualizador() {
 			</div>
 		</div>
 
-		<!-- SECÇÃO 1: Pontos de Verificação Obrigatórios (Para futuras fotos reais) -->
+		<!-- SECÇÃO 1: Pontos de Verificação Obrigatórios com o Novo Link -->
 		<div class="section-title">🔍 Parâmetros Originais e Trocar Cones (Clique para ampliar)</div>
 		<div class="check-grid">
 			
-			<div class="check-card">
-				<div class="check-img-box">
-					<img src="images/co16_cones.png" alt="Verificação de Cones e Encaixes" onclick="abrirImagemMaior(this)">
-				</div>
-				<div class="check-header">1. Estado dos Cones</div>
-				<div class="check-value">Trocar Cones CO16</div>
+			<!-- Card 1: Abre a folha de instrução ao clicar na imagem ou texto mantendo o design limpo -->
+			<div class="check-card" style="padding: 0;">
+				<a href="troca_cones_co16.htm" title="Abrir Instrução de Trabalho: Trocar Cones para Espigas" style="text-decoration: none; color: inherit; display: block; padding: 12px; cursor: pointer;">
+					<div class="check-img-box">
+						<img src="images/co16_cones.png" alt="Abrir Instrução: Trocar Cones para Espigas">
+					</div>
+					<div class="check-header">1. Estado dos Cones</div>
+					<div class="check-value">Trocar Cones CO16</div>
+				</a>
 			</div>
 			
 			<div class="check-card">
@@ -356,7 +359,6 @@ function fecharVisualizador() {
 					</tr>
 				</thead>
 				<tbody>
-					
 					<!-- ERRO 1: Falha de energia ou ar comprimido -->
 					<tr>
 						<td><span class="error-badge">Falha de energia ou ar comprimido</span></td>
@@ -386,6 +388,9 @@ function fecharVisualizador() {
 							<ol class="step-list">
 								<li><span class="step-highlight">Alterar o valor do (Ah) conforme necessário</span> para obter os valores desejados. Evitar ao máximo mexer nos (ml).</li>
 								<li>Entender o funcionamento: ao <strong>subir o valor do AH</strong> (ex: passar de 65Ah para 70Ah), estará a <strong>baixar a dureza</strong> do cobre. Ao <strong>baixar o valor do AH</strong>, estará a <strong>subir a dureza</strong>.</li>
+							</ol>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -393,7 +398,7 @@ function fecharVisualizador() {
 	</div>
 </div>
 
-<!-- CONTAINER OCULTO DA LUPA (Obrigatório para o Zoom funcionar) -->
+<!-- CONTAINER OCULTO DA LUPA -->
 <div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
 	<span class="modal-close-btn">&times;</span>
 	<img id="imgAmpliada" class="modal-content-img">

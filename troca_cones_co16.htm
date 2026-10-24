@@ -1,64 +1,365 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Language" content="pt">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>New Page 1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procedimento - Troca de Cones para Espigas</title>
+<style>
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+		background-color: #f8fafc;
+		margin: 0;
+		padding: 24px;
+		color: #1e293b;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.main-wrapper {
+		max-width: 960px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.dashboard-card {
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px solid #e2e8f0;
+		padding: 24px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+	}
+
+	.header-table {
+		width: 100%;
+		margin-bottom: 25px;
+	}
+
+	.titulo-principal {
+		font-size: 20pt;
+		font-weight: bold;
+		color: #1a202c;
+		margin: 0;
+	}
+
+	.btn-voltar {
+		display: inline-block;
+		padding: 8px 16px;
+		background-color: #edf2f7;
+		color: #4a5568;
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	.btn-voltar:hover { background-color: #e2e8f0; }
+
+	/* Banner Informativo Crítico */
+	.info-banner {
+		background-color: #eff6ff;
+		border-left: 6px solid #2563eb;
+		color: #1e40af;
+		padding: 16px 20px;
+		margin-bottom: 25px;
+		font-weight: bold;
+		font-size: 11.5pt;
+		border-radius: 6px;
+		line-height: 1.5;
+	}
+
+	/* Caixa de Destaque de Parâmetros Técnicos */
+	.formula-box {
+		background-color: #fffbeb;
+		border: 1.5px solid #fde68a;
+		border-left: 6px solid #d97706;
+		border-radius: 8px;
+		padding: 18px 24px;
+		margin-bottom: 25px;
+		color: #78350f;
+		box-shadow: 0 2px 4px rgba(217, 119, 6, 0.02);
+	}
+
+	.formula-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 6px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.formula-text {
+		font-size: 11pt;
+		line-height: 1.5;
+	}
+
+	.section-title {
+		font-size: 12pt;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #475569;
+		margin-top: 35px;
+		margin-bottom: 16px;
+		border-bottom: 2px solid #edf2f7;
+		padding-bottom: 6px;
+	}
+
+	/* Cartão Único de Indicação de Máquinas */
+	.check-card {
+		background: #ffffff;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		padding: 16px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+		margin-bottom: 25px;
+	}
+
+	.check-img-box {
+		width: 100%;
+		height: 140px;
+		background-color: #f1f5f9;
+		border-radius: 6px;
+		margin-bottom: 12px;
+		overflow: hidden;
+		border: 1px solid #e2e8f0;
+	}
+	.check-img-box img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: #f8fafc;
+		cursor: zoom-in;
+		transition: transform 0.2s ease;
+	}
+	.check-img-box img:hover { transform: scale(1.05); }
+
+	.check-header {
+		font-size: 8.5pt;
+		font-weight: bold;
+		color: #64748b;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	.check-value {
+		font-size: 11.5pt;
+		font-weight: bold;
+		color: #0f172a;
+	}
+
+	/* Tabela de Procedimentos Ilustrada */
+	.table-container {
+		width: 100%;
+		overflow-x: auto;
+		margin-top: 10px;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10.5pt;
+	}
+
+	th {
+		background-color: #f8fafc;
+		color: #475569;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 8.5pt;
+		padding: 12px 10px;
+		border-bottom: 2px solid #cbd5e1;
+		text-align: left;
+	}
+
+	td {
+		padding: 14px 10px;
+		border-bottom: 1px solid #edf2f7;
+		color: #334155;
+		vertical-align: middle;
+		text-align: left;
+	}
+
+	.linha-par { background-color: #f8fafc; }
+
+	.error-badge {
+		background-color: #fef3c7;
+		color: #d97706;
+		font-weight: bold;
+		padding: 4px 8px;
+		border-radius: 4px;
+		display: inline-block;
+		font-size: 9.5pt;
+		margin-bottom: 8px;
+	}
+
+	.step-list {
+		margin: 0;
+		padding-left: 18px;
+		line-height: 1.6;
+	}
+	.step-list li { margin-bottom: 6px; }
+	.step-highlight { font-weight: bold; color: #9a3412; background-color: #ffedd5; padding: 1px 4px; border-radius: 3px; }
+	.step-alert { font-weight: bold; color: #991b1b; background-color: #fee2e2; padding: 1px 4px; border-radius: 3px; }
+
+	/* Janela de Visualização Ampliada (Modal Lightbox) */
+	.image-viewer-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(15, 23, 42, 0.9);
+		align-items: center;
+		justify-content: center;
+		cursor: zoom-out;
+	}
+
+	.modal-content-img {
+		max-width: 85%;
+		max-height: 85%;
+		border-radius: 6px;
+		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+		border: 2px solid #ffffff;
+		background-color: #ffffff;
+		object-fit: contain;
+		animation: abrirSuave 0.2s ease-out;
+	}
+
+	.modal-close-btn {
+		position: absolute;
+		top: 20px; right: 25px;
+		color: #ffffff;
+		font-size: 28pt;
+		font-weight: bold;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	@keyframes abrirSuave {
+		from { transform: scale(0.95); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+</style>
+
 <script language="JavaScript">
 <!--
-function FP_swapImg() {//v1.0
- var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
- n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
- elm.$src=elm.src; elm.src=args[n+1]; } }
+function abrirImagemMaior(elementoImg) {
+	var modal = document.getElementById("mdlVisualizador");
+	var modalImg = document.getElementById("imgAmpliada");
+	modal.style.display = "flex";
+	modalImg.src = elementoImg.src;
+	modalImg.alt = elementoImg.alt;
 }
 
-function FP_preloadImgs() {//v1.0
- var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
- for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
-}
-
-function FP_getObjectByID(id,o) {//v1.0
- var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
- else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
- if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
- for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
- f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
- for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
- return null;
+function fecharVisualizador() {
+	var modal = document.getElementById("mdlVisualizador");
+	modal.style.display = "none";
 }
 // -->
 </script>
 </head>
 
-<body onload="FP_preloadImgs(/*url*/'images/button48.jpg', /*url*/'images/button4B.jpg')">
+<body>
 
-<p><a href="co16.htm">
-<img border="0" id="img4" src="images/button45.jpg" height="20" width="100" alt="Voltar" onmouseover="FP_swapImg(1,0,/*id*/'img4',/*url*/'images/button48.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img4',/*url*/'images/button45.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img4',/*url*/'images/button4B.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img4',/*url*/'images/button48.jpg')" fp-style="fp-btn: Glass Capsule 1" fp-title="Voltar"></a></p>
-<p align="center"><b><font size="7" color="#FF0000">Trocar Cones normais para 
-espigas</font></b></p>
-<p align="center">
-<img border="0" src="images/2016-06-09%2010.06.12.jpg" width="304" height="540"></p>
-<p align="center">
-<img border="0" src="images/IMG_20191011_174844.jpg" width="360" height="270"><img border="0" src="images/IMG_20191016_103108.jpg" width="360" height="270"></p>
-<p align="center">
-<img border="0" src="images/IMG_20191029_095155.jpg" width="320" height="426"><img border="0" src="images/IMG_20191011_172941.jpg" width="320" height="426"></p>
-<p align="center">&nbsp;</p>
-<p align="center"><span style="font-size: 16pt">1� - abrir a m�quina 
-completamente e abrir as caixas de prote��o.</span></p>
-<p align="center"><span style="font-size: 16pt">2�&nbsp; - desapertar os 
-parafusos de suporte dos cones e efetuar a troca</span></p>
-<p align="center"><span style="font-size: 16pt">3� - alterar o valor atual do
-<span style="background-color: #FFFF00"><font color="#FF0000">TR.MAX.</font></span> 
-(<font color="#FF0000"><b>1985 - 270 de cones normais</b></font>) para (<font color="#FF0000"><b>2190 
-- 465 de cones para espigas</b></font>), para efetuar esta altera��o deve-se 
-entrar com a pass de OWNER.</span></p>
-<p align="center"><span style="font-size: 16pt">4 � - ap�s estas altera��es j� � 
-possivel cobrear espigas na linha automatica, sendo que � necess�rio extremo 
-cuidado neste processo e os cilindros devem entrar diretamente na m�quina de 
-cobrear ap�s o polimento sem desengordurar automaticamente.</span></p>
+<div class="main-wrapper">
+	<div class="dashboard-card">
+		
+		<table class="header-table" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><h1 class="titulo-principal">Instrução de Trabalho &bull; Troca de Cones</h1></td>
+				<td align="right"><a href="javascript:history.back()" class="btn-voltar">&larr; Voltar</a></td>
+			</tr>
+		</table>
 
-<p>&nbsp;</p>
+		<!-- Diretriz de Segurança e Cuidado Extremo -->
+		<div class="info-banner" style="background-color: #fee2e2; border-left-color: #ef4444; color: #991b1b;">
+			⚠️ ATENÇÃO E CUIDADO EXTREMO: Após estas alterações já é possível cobrear espigas na linha automática, sendo que os cilindros devem entrar diretamente na máquina de cobrear após o polimento sem desengordurar automaticamente.
+		</div>
+
+		<!-- Caixa de Destaque Técnica com a Alteração do TR.MAX -->
+		<div class="formula-box">
+			<div class="formula-title">⚙️ ALTERAÇÃO DE PARÂMETROS NO SISTEMA (TR.MAX):</div>
+			<div class="formula-text">
+				Para efetuar esta alteração deve-se entrar com a password de <strong>OWNER</strong>:<br>
+				&bull; Alterar o valor atual do TR.MAX de <strong>1985</strong> (270 de cones normais) para <strong>2190</strong> (465 de cones para espigas).
+			</div>
+		</div>
+
+		<!-- SECÇÃO 1: Indicação Unificada das Máquinas -->
+		<div class="section-title">🔍 Máquinas Abrangidas por este Procedimento</div>
+		<div class="check-card">
+			<div class="check-img-box">
+				<img src="images/linha_co_cones.png" alt="Troca de Cones nas Máquinas de Cobrear" onclick="abrirImagemMaior(this)">
+			</div>
+			<div class="check-header">Linha Automática de Cobrear</div>
+			<div class="check-value">Esta instrução aplica-se com rigor tanto na máquina CO12 CuMax como na CO16</div>
+		</div>
+
+		<!-- SECÇÃO 2: Passos do Procedimento Técnico -->
+		<div class="section-title">🛠 Sequência de Trabalho - Trocar Cones Normais para Espigas</div>
+		<div class="table-container">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th style="width: 25%;">Etapa do Processo</th>
+						<th style="width: 30%;">Referência Visual / Imagem</th>
+						<th style="width: 45%;">Procedimento Operacional</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Fase Mecânica -->
+					<tr>
+						<td>
+							<span class="error-badge">1ª Fase: Mecânica</span>
+						</td>
+						<td>
+							<div class="check-card" style="display: block; width: auto; max-width: 180px; margin: 0;">
+								<div class="check-img-box" style="height: 95px; margin-bottom: 6px;">
+									<img src="images/troca_mecanica_cones.png" alt="Abertura de Caixas e Suportes" onclick="abrirImagemMaior(this)">
+								</div>
+								<div class="check-header" style="font-size: 8pt; text-align: center;">Suportes e Parafusos</div>
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Abrir a máquina completamente e <span class="step-highlight">abrir as caixas de proteção</span>.</li>
+								<li>Desapertar os parafusos de suporte dos cones e efetuar a troca física dos cones normais para os cones de espigas.</li>
+							</ol>
+						</td>
+					</tr>
+					<!-- Fase de Software -->
+					<tr class="linha-par">
+						<td>
+							<span class="error-badge">2ª Fase: Sistema e Linha</span>
+						</td>
+						<td>
+							<div class="check-card" style="display: block; width: auto; max-width: 180px; margin: 0;">
+								<div class="check-img-box" style="height: 95px; margin-bottom: 6px;">
+									<img src="images/painel_owner_tr_max.png" alt="Alteração de parâmetros no ecrã" onclick="abrirImagemMaior(this)">
+								</div>
+								<div class="check-header" style="font-size: 8pt; text-align: center;">Ecrã de Parâmetros</div>
+							</div>
+						</td>
+						<td>
+							<ol class="step-list">
+								<li>Entrar no sistema informático introduzindo as credenciais com nível de acesso de <strong>OWNER</strong>.</li>
+								<li>Alterar o valor atual do TR.MAX de <span class="step-highlight">1985</span> para <span class="step-highlight">2190</span>.</li>
+								<li><span class="step-alert">Aviso Crítico no Fluxo:</span> Os cilindros devem entrar diretamente na máquina de cobrear após o polimento <strong>sem desengordurar automaticamente</strong>.</li>
+							</ol>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<!-- Janela de Visualização Ampliada (Modal Lightbox) -->
+<div id="mdlVisualizador" class="image-viewer-modal" onclick="fecharVisualizador()">
+	<span class="modal-close-btn" onclick="fecharVisualizador()">&times;</span>
+	<img class="modal-content-img" id="imgAmpliada">
+</div>
 
 </body>
-
 </html>
